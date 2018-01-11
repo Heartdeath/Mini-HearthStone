@@ -1,13 +1,13 @@
 package cartes.effect;
 
-import cartes.FactoryCard;
+import cartes.FactoryCarte;
 import etat.Joueur;
 
 public class Effect1DegatTOUSServiteur extends EffectDecorator {
 	private String name;
     private String effect;
 
-    public Effect1DegatTOUSServiteur(FactoryCard fc) {
+    public Effect1DegatTOUSServiteur(FactoryCarte fc) {
         this.fc = fc;
         this.name = "Tourbillon";
         this.effect = "Inflige 1 degat a tous les serviteurs";
@@ -27,11 +27,11 @@ public class Effect1DegatTOUSServiteur extends EffectDecorator {
 
     @Override
     public void useEffect() { 
-    	for(FactoryCard c : getJoueur().getListeCarteEnJeux()){
+    	for(FactoryCarte c : getJoueur().getListeCarteEnJeux()){
 			int life = c.getVie();
 			c.setVie(life-1);
 		}
-    	for(FactoryCard c : getAdversaire().getListeCarteEnJeux()){
+    	for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
 			int life = c.getVie();
 			c.setVie(life-1);
 		}

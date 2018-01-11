@@ -1,13 +1,13 @@
 package cartes.effect;
 
-import cartes.FactoryCard;
+import cartes.FactoryCarte;
 import etat.Joueur;
 
 public class EffectPlus1AttaqueToutServiteurAllie extends EffectDecorator {
 	private String name;
 	private String effect;
 	
-	public EffectPlus1AttaqueToutServiteurAllie(FactoryCard fc) {
+	public EffectPlus1AttaqueToutServiteurAllie(FactoryCarte fc) {
 		this.fc = fc;
 		this.name = "Plus 1 d attaque";
 		this.effect = "Plus 1 d attaque a tous les serviteurs allies sur le plateau (tant que ce serviteur est vivant)";
@@ -23,7 +23,7 @@ public class EffectPlus1AttaqueToutServiteurAllie extends EffectDecorator {
 
 	@Override
 	public void useEffect() {
-		for(FactoryCard c : getJoueur().getListeCarteEnJeux()){
+		for(FactoryCarte c : getJoueur().getListeCarteEnJeux()){
 			int attack = c.getAttaque();
 			c.setAttaque(attack+1);
 		}

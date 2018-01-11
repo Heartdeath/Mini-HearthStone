@@ -1,13 +1,13 @@
 package cartes.effect;
 
-import cartes.FactoryCard;
+import cartes.FactoryCarte;
 import etat.Joueur;
 
 public class EffectInflige2DegatTousAdv extends EffectDecorator {
 	private String name;
 	private String effect;
 	
-	public EffectInflige2DegatTousAdv(FactoryCard fc) {
+	public EffectInflige2DegatTousAdv(FactoryCarte fc) {
 		this.fc = fc;
 		this.name = "Consecration";
 		this.effect = "Inflige 2 points de degats a tous les adversaires";
@@ -27,7 +27,7 @@ public class EffectInflige2DegatTousAdv extends EffectDecorator {
 
 	@Override
 	public void useEffect() { 
-		for(FactoryCard c : getAdversaire().getListeCarteEnJeux()){
+		for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
 			int life = c.getVie();
 			c.setVie(life-2);
 		}

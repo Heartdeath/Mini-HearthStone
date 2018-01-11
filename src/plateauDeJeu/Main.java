@@ -88,7 +88,7 @@ public class Main {
 			jeu1.pointDeMana(j2);
 		}
 		
-		while(j1.getHeros().getLife() != 0 || j1.getHeros().getLife() != 0){
+		while(j1.getHeros().getVie() != 0 || j1.getHeros().getVie() != 0){
 			String choix = sc.nextLine();
 			//if(choix.equalsIgnoreCase("attaqueCarte"))
 			

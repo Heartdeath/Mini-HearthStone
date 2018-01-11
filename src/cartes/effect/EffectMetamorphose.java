@@ -1,6 +1,6 @@
 package cartes.effect;
 
-import cartes.FactoryCard;
+import cartes.FactoryCarte;
 import cartes.commune.ServiteurUnUn;
 import etat.Joueur;
 
@@ -8,7 +8,7 @@ public class EffectMetamorphose extends EffectDecorator{
 	private String name;
 	private String effect;
 	
-	public EffectMetamorphose(FactoryCard fc) {
+	public EffectMetamorphose(FactoryCarte fc) {
 		this.fc = fc;
 		this.name = "Metamorphose";
 		this.effect = "Transforme un serviteur en serviteur 1/1 sans effet special";

@@ -1,13 +1,13 @@
 package cartes.effect;
 
-import cartes.FactoryCard;
+import cartes.FactoryCarte;
 import etat.Joueur;
 
 public class EffectConfere3AttaqueUnServiteur extends EffectDecorator {
 	private String name;
     private String effect;
 
-    public EffectConfere3AttaqueUnServiteur(FactoryCard fc) {
+    public EffectConfere3AttaqueUnServiteur(FactoryCarte fc) {
         this.fc = fc;
         this.name = "Benediction de puissance";
         this.effect = "Confere +3 d attaque a un serviteur";

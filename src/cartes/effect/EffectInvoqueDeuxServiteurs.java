@@ -1,6 +1,6 @@
 package cartes.effect;
 
-import cartes.FactoryCard;
+import cartes.FactoryCarte;
 import cartes.commune.ServiteurZeroDeux;
 import etat.Joueur;
 
@@ -11,7 +11,7 @@ public class EffectInvoqueDeuxServiteurs extends EffectDecorator{
     private String name;
     private String effect;
 
-    public EffectInvoqueDeuxServiteurs(FactoryCard fc) {
+    public EffectInvoqueDeuxServiteurs(FactoryCarte fc) {
         this.fc = fc;
         this.name = "Image miroir";
         this.effect = "Invoque deux serviteurs 0/2 avec provocation";
@@ -31,7 +31,7 @@ public class EffectInvoqueDeuxServiteurs extends EffectDecorator{
 
     @Override
     public void useEffect() {
-    	FactoryCard fc = new ServiteurZeroDeux(getJoueur(), getAdversaire());
+    	FactoryCarte fc = new ServiteurZeroDeux(getJoueur(), getAdversaire());
     	            fc = new EffectProvocation(fc);
     	getJoueur().getListeCarteEnJeux().add(fc);
     	getJoueur().getListeCarteEnJeux().add(fc);

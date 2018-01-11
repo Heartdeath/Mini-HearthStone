@@ -1,6 +1,6 @@
 package cartes.effect;
 
-import cartes.FactoryCard;
+import cartes.FactoryCarte;
 import cartes.commune.ServiteurZeroDeux;
 import etat.Joueur;
 
@@ -11,7 +11,7 @@ public class EffectMaitriseDuBlocage extends EffectDecorator{
     private String name;
     private String effect;
 
-    public EffectMaitriseDuBlocage(FactoryCard fc) {
+    public EffectMaitriseDuBlocage(FactoryCarte fc) {
         this.fc = fc;
         this.name = "Maitrise du blocage";
         this.effect = "+5 d armure et place une carte aleatoire de la pioche dans votre main";
@@ -31,7 +31,7 @@ public class EffectMaitriseDuBlocage extends EffectDecorator{
 
     @Override
     public void useEffect() {
-    	getJoueur().getHeros().setLife(getJoueur().getHeros().getLife() + 5);
+    	getJoueur().getHeros().setVie(getJoueur().getHeros().getVie() + 5);
     	getJoueur().tirageCarte();
     }
 

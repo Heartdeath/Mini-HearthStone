@@ -27,10 +27,10 @@ public class PowerMage extends Power {
 	public String toString(){return heros.toString() + effect;}
 
 	@Override
-	public int getLife() {return heros.getLife();}
+	public int getVie() {return heros.getVie();}
 
 	@Override
-	public void setLife(int life) {this.heros.setLife(life);}
+	public void setVie(int life) {this.heros.setVie(life);}
 
 	@Override
 	public String typeHero() {return heros.typeHero();}
@@ -42,8 +42,8 @@ public class PowerMage extends Power {
 	public Joueur getJoueur() {return heros.getJoueur();}
 	
 	@Override
-	public boolean getCanBeAttaque() {return heros.getCanBeAttaque();}
+	public boolean getPeutEtreAttaquer() {return heros.getPeutEtreAttaquer();}
 
 	@Override
-	public void setCanBeAttaque(boolean b) {heros.setCanBeAttaque(b);}
+	public void setPeutEtreAttaque(boolean b) {heros.setPeutEtreAttaque(b);}
 }

@@ -1,13 +1,13 @@
 package cartes.effect;
 
-import cartes.FactoryCard;
+import cartes.FactoryCarte;
 import etat.Joueur;
 
 public class EffectVolDeVie extends EffectDecorator {
 	private String name;
 	private String effect;
 	
-	public EffectVolDeVie(FactoryCard fc) {
+	public EffectVolDeVie(FactoryCarte fc) {
 		this.fc = fc;
 		this.name = "Vol de vie";
 		this.effect = "Vol " + fc.getAttaque() + " point de vie";
@@ -29,10 +29,10 @@ public class EffectVolDeVie extends EffectDecorator {
 	public void useEffect() {
 		for(int i = 0;i < getAdversaire().getListeCarteEnJeux().size() ;i++){
 			getAdversaire().getListeCarteEnJeux().get(getAdversaire().getValChoisi()).setVie(getAdversaire().getListeCarteEnJeux().get(getAdversaire().getValChoisi()).getVie() - getAttaque());
-			if(getJoueur().getHeros().getLife() + getAttaque() > 30){
-				getJoueur().getHeros().setLife(30);
+			if(getJoueur().getHeros().getVie() + getAttaque() > 30){
+				getJoueur().getHeros().setVie(30);
 			}else{
-				getJoueur().getHeros().setLife(getJoueur().getHeros().getLife() + getAttaque());
+				getJoueur().getHeros().setVie(getJoueur().getHeros().getVie() + getAttaque());
 			}
 		}
 	}

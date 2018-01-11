@@ -1,13 +1,13 @@
 package cartes.effect;
 
-import cartes.FactoryCard;
+import cartes.FactoryCarte;
 import etat.Joueur;
 
 public class EffectCharge extends EffectDecorator {
 	private String name;
 	private String effect;
 	
-	public EffectCharge(FactoryCard fc) {
+	public EffectCharge(FactoryCarte fc) {
 		this.fc = fc;
 		this.name = "Charge";
 		this.effect = "Attaque directement";

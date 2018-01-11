@@ -5,44 +5,43 @@ import power.Power;
 
 public class HerosMage extends Heros {
 
-	private int life;
-	private Joueur joueurAdv;
+	private Joueur jAdversaire;
 	private Joueur joueur;
-	private boolean canBeAttaque;
+	private int vie;
+	private boolean peutEtreAttaquer;
 	
 	public HerosMage(Joueur jAdv, Joueur j){
 		this.joueur = j;
-		this.joueurAdv = jAdv;
-		this.life = 30;
-		this.canBeAttaque = true;
+		this.jAdversaire = jAdv;
+		this.vie = 30;
+		this.peutEtreAttaquer = true;
 	}
 	
 	@Override
-	public int getLife() {return life;}
+	public int getVie() {return vie;}
 
 	@Override
-	public void setLife(int life) {this.life = life;}
+	public void setVie(int life) {this.vie = life;}
 
 	@Override
 	public String typeHero() {return "Mage";}
 
 	@Override
 	public String getPower() {
-		// TODO Auto-generated method stub
 		return "Pouvoir :";
 	}
 	
 	public String toString(){return typeHero();}
 
 	@Override
-	public Joueur getJoueurAdversaire() {return joueurAdv;}
+	public Joueur getJoueurAdversaire() {return jAdversaire;}
 
 	@Override
 	public Joueur getJoueur() {return joueur;}
 	
 	@Override
-	public boolean getCanBeAttaque() {return canBeAttaque;}
+	public boolean getPeutEtreAttaquer() {return peutEtreAttaquer;}
 
 	@Override
-	public void setCanBeAttaque(boolean b) {this.canBeAttaque = b;}
+	public void setPeutEtreAttaque(boolean b) {this.peutEtreAttaquer = b;}
 }

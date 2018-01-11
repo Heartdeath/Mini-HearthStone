@@ -1,6 +1,6 @@
 package cartes.effect;
 
-import cartes.FactoryCard;
+import cartes.FactoryCarte;
 import etat.Joueur;
 
 /**
@@ -10,7 +10,7 @@ public class EffectInfligeDegatAdversaire extends EffectDecorator {
     private String name;
     private String effect;
 
-    public EffectInfligeDegatAdversaire(FactoryCard fc) {
+    public EffectInfligeDegatAdversaire(FactoryCarte fc) {
         this.fc = fc;
         this.name = "ExplosionDesArcanes";
         this.effect = "Inflige 1 point de degats a tous les serviteurs adverses";
@@ -30,7 +30,7 @@ public class EffectInfligeDegatAdversaire extends EffectDecorator {
 
     @Override
     public void useEffect() { 
-    	for(FactoryCard c : getAdversaire().getListeCarteEnJeux()){
+    	for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
 			int life = c.getVie();
 			c.setVie(life-1);
 		}

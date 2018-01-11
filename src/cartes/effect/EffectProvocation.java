@@ -1,13 +1,13 @@
 package cartes.effect;
 
-import cartes.FactoryCard;
+import cartes.FactoryCarte;
 import etat.Joueur;
 
 public class EffectProvocation extends EffectDecorator {
 	private String name;
 	private String effect;
 	
-	public EffectProvocation(FactoryCard fc) {
+	public EffectProvocation(FactoryCarte fc) {
 		this.fc = fc;
 		this.name = "Provocation";
 		this.effect = "Cible prioritaire";
@@ -29,9 +29,9 @@ public class EffectProvocation extends EffectDecorator {
 	public void useEffect() {
 		System.out.println(effect);
 		
-		getJoueur().getHeros().setCanBeAttaque(false);
+		getJoueur().getHeros().setPeutEtreAttaque(false);
 		
-		for(FactoryCard c : getJoueur().getListeCarteEnJeux()){
+		for(FactoryCarte c : getJoueur().getListeCarteEnJeux()){
 			if(c.getEffect().contains(getName())){
 				setPeutEtreAttaquer(true);
 			}else{

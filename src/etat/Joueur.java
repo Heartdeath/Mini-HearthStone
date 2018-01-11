@@ -2,7 +2,7 @@ package etat;
 
 import java.util.ArrayList;
 
-import cartes.FactoryCard;
+import cartes.FactoryCarte;
 import cartes.commune.ChefDeRaid;
 import cartes.commune.ChevaucheurDeLoup;
 import cartes.commune.SanglierBrocheroc;
@@ -40,8 +40,8 @@ public class Joueur {
 	private int mana;
 	private Heros heros;
 	private Etat etat;
-	private ArrayList<FactoryCard> listeCarteDuJoueurMain;
-	private ArrayList<FactoryCard> listeCarteEnJeux;
+	private ArrayList<FactoryCarte> listeCarteDuJoueurMain;
+	private ArrayList<FactoryCarte> listeCarteEnJeux;
 	private int valChoisi; //index de la carte cibl� pour un pouvoir/effet
 
 	public Joueur(String name, String heros, Joueur joueurAdv) {
@@ -64,13 +64,13 @@ public class Joueur {
 		listeCarteEnJeux = new ArrayList<>();
 	}
 	
-	public ArrayList<FactoryCard> getListeCarteDuJoueurMain() {return listeCarteDuJoueurMain;}
+	public ArrayList<FactoryCarte> getListeCarteDuJoueurMain() {return listeCarteDuJoueurMain;}
 
-	public void setListeCarteDuJoueurMain(ArrayList<FactoryCard> listeCarteDuJoueurMain) {this.listeCarteDuJoueurMain = listeCarteDuJoueurMain;}
+	public void setListeCarteDuJoueurMain(ArrayList<FactoryCarte> listeCarteDuJoueurMain) {this.listeCarteDuJoueurMain = listeCarteDuJoueurMain;}
 
-	public ArrayList<FactoryCard> getListeCarteEnJeux() {return listeCarteEnJeux;}
+	public ArrayList<FactoryCarte> getListeCarteEnJeux() {return listeCarteEnJeux;}
 
-	public void setListeCarteEnJeux(ArrayList<FactoryCard> listeCarteEnJeux) {this.listeCarteEnJeux = listeCarteEnJeux;}
+	public void setListeCarteEnJeux(ArrayList<FactoryCarte> listeCarteEnJeux) {this.listeCarteEnJeux = listeCarteEnJeux;}
 	
 	public Joueur getJoueurAdv() {return joueurAdv;}
 
@@ -113,11 +113,11 @@ public class Joueur {
 	
 	public void setValChoisi(int valChoisi){this.valChoisi = valChoisi;}
 	
-	public FactoryCard tirageCarte(){
+	public FactoryCarte tirageCarte(){
 		int lower = 1 , higher = 9;
 		int random = (int)(Math.random()*(higher-lower)) + lower;
 		
-		FactoryCard fc = null;
+		FactoryCarte fc = null;
 		Joueur j1 = this;
 		if(j1.getHeros().typeHero() == "Mage"){
 			switch (random) {
@@ -212,7 +212,7 @@ public class Joueur {
 			//verif mana
 			System.out.println("Mana : " + getMana());
 			//verif vie
-			System.out.println("Vie : " + getHeros().getLife());
+			System.out.println("Vie : " + getHeros().getVie());
 		}
 		else if(rand == 2){
 			addCardMain();
@@ -220,12 +220,12 @@ public class Joueur {
 			addCardMain();
 			System.out.println("Carte en main de "+getName());
 			System.out.println("Mana : " + getMana());
-			System.out.println("Vie : " + getHeros().getLife());
+			System.out.println("Vie : " + getHeros().getVie());
 		}
 	}
 	
 	public void addCardMain(){
-		FactoryCard carteAjout = tirageCarte();
+		FactoryCarte carteAjout = tirageCarte();
 		System.out.println(carteAjout.toString() + " a ete ajoute a votre main !");
 		listeCarteDuJoueurMain.add(carteAjout);
 	}
@@ -233,24 +233,24 @@ public class Joueur {
 	public void addCardJeu(){
 		int NumeroDeLaCarteDansLaMain = 1;
 		//TODO
-		FactoryCard carteAJouer = listeCarteDuJoueurMain.get(NumeroDeLaCarteDansLaMain);
+		FactoryCarte carteAJouer = listeCarteDuJoueurMain.get(NumeroDeLaCarteDansLaMain);
 		listeCarteEnJeux.add(carteAJouer);
 	}
 
 	public void afficherCardMain(){
-		for(FactoryCard c : listeCarteDuJoueurMain){
+		for(FactoryCarte c : listeCarteDuJoueurMain){
 			System.out.println("|" +listeCarteDuJoueurMain.indexOf(c) + "|" + c.toString() /*Faire les toString des cartes (en gros ajouter leur nom)*/);
 		}
 	}
 	
 	public void afficherCardJeu(){
-		for(FactoryCard c : listeCarteEnJeux){
+		for(FactoryCarte c : listeCarteEnJeux){
 			System.out.println("|" +listeCarteEnJeux.indexOf(c) + "|" + c.toString() /*Faire les toString des cartes (en gros ajouter leur nom)*/);
 		}
 	}
 	
 	public void afficherInfoJoueur(){
-		System.out.println("Vie restante : " + heros.getLife());
+		System.out.println("Vie restante : " + heros.getVie());
 		System.out.println("Mana         : " + getMana());
 		System.out.println("A vous "+getName()+" !");
 	}
