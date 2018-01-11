@@ -16,33 +16,54 @@ public class PowerPaladin extends Power {
 		this.effect = "Invoquant un serviteur \"recrue de la Main d argent\" ."; //1/1
 	}
 
-	public String getName() {return this.name;}
-	public String getPower() {return heros.getPower() + this.getName();}
+	public String getNomPower() {
+		return this.name;
+	}
+	
+	public String getPower() {
+		return heros.getPower() + this.getNomPower();
+	}
 
 	public void usePower() {
 		getJoueur().getListeCarteEnJeux().add(new ServiteurUnUn(getJoueur(), getJoueurAdversaire()));
 	}
 	
-	public String toString(){return heros.toString() + effect;}
+	public String toString(){
+		return heros.toString() + effect;
+	}
 
 	@Override
-	public int getVie() {return heros.getVie();}
+	public int getVie() {
+		return heros.getVie();
+	}
 
 	@Override
-	public void setVie(int life) {this.heros.setVie(life);}
+	public void setVie(int life) {
+		this.heros.setVie(life);
+	}
 
 	@Override
-	public String typeHero() {return heros.typeHero();}
+	public String typeHero() {
+		return heros.typeHero();
+	}
 	
 	@Override
-	public Joueur getJoueurAdversaire() {return heros.getJoueurAdversaire();}
+	public Joueur getJoueurAdversaire() {
+		return heros.getJoueurAdversaire();
+	}
 	
 	@Override
-	public Joueur getJoueur() {return heros.getJoueur();}
+	public Joueur getJoueur() {
+		return heros.getJoueur();
+	}
 	
 	@Override
-	public boolean getPeutEtreAttaquer() {return heros.getPeutEtreAttaquer();}
+	public boolean getPeutEtreAttaquer() {
+		return heros.getPeutEtreAttaquer();
+	}
 
 	@Override
-	public void setPeutEtreAttaque(boolean b) {heros.setPeutEtreAttaque(b);}
+	public void setPeutEtreAttaque(boolean b) {
+		heros.setPeutEtreAttaque(b);
+	}
 }

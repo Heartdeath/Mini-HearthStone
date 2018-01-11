@@ -15,33 +15,49 @@ public class PowerGuerrier extends Power {
 		this.effect = "Confere 2 points d armure.";
 	}
 
-	public String getName() {return this.name;}
-	public String getPower() {return heros.getPower() + this.getName();}
+	public String getNomPower() {return this.name;}
+	public String getPower() {return heros.getPower() + this.getNomPower();}
 
 	public void usePower() {
 		setVie(getVie()+2);
 	}
 	
-	public String toString(){return heros.toString() + effect;}
+	public String toString(){
+		return heros.toString() + effect;
+	}
 
 	@Override
-	public int getVie() {return heros.getVie();}
+	public int getVie() {
+		return heros.getVie();
+	}
 
 	@Override
-	public void setVie(int life) {this.heros.setVie(life);}
+	public void setVie(int life) {
+		this.heros.setVie(life);
+	}
 
 	@Override
-	public String typeHero() {return heros.typeHero();}
+	public String typeHero() {
+		return heros.typeHero();
+	}
 	
 	@Override
-	public Joueur getJoueurAdversaire() {return heros.getJoueurAdversaire();}
+	public Joueur getJoueurAdversaire() {
+		return heros.getJoueurAdversaire();
+	}
 
 	@Override
-	public Joueur getJoueur() {return heros.getJoueur();}
+	public Joueur getJoueur() {
+		return heros.getJoueur();
+	}
 
 	@Override
-	public boolean getPeutEtreAttaquer() {return heros.getPeutEtreAttaquer();}
+	public boolean getPeutEtreAttaquer() {
+		return heros.getPeutEtreAttaquer();
+	}
 
 	@Override
-	public void setPeutEtreAttaque(boolean b) {heros.setPeutEtreAttaque(b);}
+	public void setPeutEtreAttaque(boolean b) {
+		heros.setPeutEtreAttaque(b);
+	}
 }

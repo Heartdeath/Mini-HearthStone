@@ -7,8 +7,9 @@ import etat.Joueur;
 public class Jeux {
 	
 	public int initialisationPartie(Joueur j1, Joueur j2){
-		int lower = 1 , higher = 3;
-		int random = (int)(Math.random()*(higher-lower)) + lower;
+		int min = 1;
+		int max = 3;
+		int random = (int)(Math.random()*(max-min)) + min;
 		System.out.println("random == " + random);
 		if(random == 1){
 			j1.initialiseMain(random);
@@ -28,7 +29,7 @@ public class Jeux {
 	}
 	
 	public void changementDeTour(Joueur j1, Joueur j2){
-		//TODO DP State
+		
 		EtatJouer joue = new EtatJouer();
 		EtatAttente enAttente = new EtatAttente();
 		

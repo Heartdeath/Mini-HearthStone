@@ -13,7 +13,7 @@ public abstract class Power extends Heros{
 	/**
 	 * @return le nom du pouvoir
 	 */
-	public abstract String getName();
+	public abstract String getNomPower();
 	
 	/**
 	 * Utilise le pouvoir du héros

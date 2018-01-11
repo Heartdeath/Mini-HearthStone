@@ -35,52 +35,70 @@ import power.PowerPaladin;
 
 public class Joueur {
 	private Joueur joueurAdv;
-	private String name;
+	private String nomJoueur;
 	private boolean enVie;
 	private int mana;
 	private Heros heros;
 	private Etat etat;
 	private ArrayList<FactoryCarte> listeCarteDuJoueurMain;
 	private ArrayList<FactoryCarte> listeCarteEnJeux;
-	private int valChoisi; //index de la carte cibl� pour un pouvoir/effet
+	private int valChoisie; //index de la carte cibl� pour un pouvoir/effet
 
 	public Joueur(String name, String heros, Joueur joueurAdv) {
 		this.joueurAdv = joueurAdv;
-		this.name = name;
+		this.nomJoueur = name;
 		this.enVie = true;
 		this.mana = 1;
 		setHeros(heros);
 		listeCarteDuJoueurMain = new ArrayList<>();
 		listeCarteEnJeux = new ArrayList<>();
-		this.valChoisi = 0;
+		this.valChoisie = 0;
 	}
 	
 	public Joueur(String name) {
 		this.joueurAdv = null;
-		this.name = name;
+		this.nomJoueur = name;
 		this.enVie = true;
 		this.mana = 1;
 		listeCarteDuJoueurMain = new ArrayList<>();
 		listeCarteEnJeux = new ArrayList<>();
 	}
 	
-	public ArrayList<FactoryCarte> getListeCarteDuJoueurMain() {return listeCarteDuJoueurMain;}
+	public ArrayList<FactoryCarte> getListeCarteDuJoueurMain() {
+		return listeCarteDuJoueurMain;
+	}
 
-	public void setListeCarteDuJoueurMain(ArrayList<FactoryCarte> listeCarteDuJoueurMain) {this.listeCarteDuJoueurMain = listeCarteDuJoueurMain;}
+	public void setListeCarteDuJoueurMain(ArrayList<FactoryCarte> listeCarteDuJoueurMain) {
+		this.listeCarteDuJoueurMain = listeCarteDuJoueurMain;
+	}
 
-	public ArrayList<FactoryCarte> getListeCarteEnJeux() {return listeCarteEnJeux;}
+	public ArrayList<FactoryCarte> getListeCarteEnJeux() {
+		return listeCarteEnJeux;
+	}
 
-	public void setListeCarteEnJeux(ArrayList<FactoryCarte> listeCarteEnJeux) {this.listeCarteEnJeux = listeCarteEnJeux;}
+	public void setListeCarteEnJeux(ArrayList<FactoryCarte> listeCarteEnJeux) {
+		this.listeCarteEnJeux = listeCarteEnJeux;
+	}
 	
-	public Joueur getJoueurAdv() {return joueurAdv;}
+	public Joueur getJoueurAdv() {
+		return joueurAdv;
+	}
 
-	public void setJoueurAdv(Joueur joueurAdv) {this.joueurAdv = joueurAdv;}
+	public void setJoueurAdv(Joueur joueurAdv) {
+		this.joueurAdv = joueurAdv;
+	}
 	
-	public boolean isEnVie() {return enVie;}
+	public boolean isEnVie() {
+		return enVie;
+	}
 
-	public void setEnVie(boolean enVie) {this.enVie = enVie;}
+	public void setEnVie(boolean enVie) {
+		this.enVie = enVie;
+	}
 
-	public Heros getHeros() {return heros;}
+	public Heros getHeros() {
+		return heros;
+	}
 
 	public void setHeros(String heros) {
 		if(heros.equalsIgnoreCase("Mage")){
@@ -97,21 +115,37 @@ public class Joueur {
 		System.out.println("Pouvoir du hero +>" +getHeros().getPower());
 	}
 
-	public String getName() {return name;}
+	public String getName() {
+		return nomJoueur;
+	}
 
-	public void setName(String name) {this.name = name;}
+	public void setName(String name) {
+		this.nomJoueur = name;
+	}
 
-	public int getMana() {return mana;}
+	public int getMana() {
+		return mana;
+	}
 
-	public void setMana(int mana) {this.mana = mana;}
+	public void setMana(int mana) {
+		this.mana = mana;
+	}
 	
-	public Etat getEtat() {return etat;}
+	public Etat getEtat() {
+		return etat;
+	}
 
-	public void setEtat(Etat etat) {this.etat = etat;}
+	public void setEtat(Etat etat) {
+		this.etat = etat;
+	}
 
-	public int getValChoisi() {return 0;}
+	public int getValChoisi() {
+		return 0;
+	}
 	
-	public void setValChoisi(int valChoisi){this.valChoisi = valChoisi;}
+	public void setValChoisi(int valChoisi){
+		this.valChoisie = valChoisi;
+	}
 	
 	public FactoryCarte tirageCarte(){
 		int lower = 1 , higher = 9;
@@ -232,7 +266,6 @@ public class Joueur {
 	
 	public void addCardJeu(){
 		int NumeroDeLaCarteDansLaMain = 1;
-		//TODO
 		FactoryCarte carteAJouer = listeCarteDuJoueurMain.get(NumeroDeLaCarteDansLaMain);
 		listeCarteEnJeux.add(carteAJouer);
 	}

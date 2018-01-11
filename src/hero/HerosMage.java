@@ -18,30 +18,46 @@ public class HerosMage extends Heros {
 	}
 	
 	@Override
-	public int getVie() {return vie;}
+	public int getVie() {
+		return vie;
+	}
 
 	@Override
-	public void setVie(int life) {this.vie = life;}
+	public void setVie(int life) {
+		this.vie = life;
+	}
 
 	@Override
-	public String typeHero() {return "Mage";}
+	public String typeHero() {
+		return "Mage";
+	}
 
 	@Override
 	public String getPower() {
 		return "Pouvoir :";
 	}
 	
-	public String toString(){return typeHero();}
+	public String toString(){
+		return typeHero();
+	}
 
 	@Override
-	public Joueur getJoueurAdversaire() {return jAdversaire;}
+	public Joueur getJoueurAdversaire() {
+		return jAdversaire;
+	}
 
 	@Override
-	public Joueur getJoueur() {return joueur;}
+	public Joueur getJoueur() {
+		return joueur;
+	}
 	
 	@Override
-	public boolean getPeutEtreAttaquer() {return peutEtreAttaquer;}
+	public boolean getPeutEtreAttaquer() {
+		return peutEtreAttaquer;
+	}
 
 	@Override
-	public void setPeutEtreAttaque(boolean b) {this.peutEtreAttaquer = b;}
+	public void setPeutEtreAttaque(boolean b) {
+		this.peutEtreAttaquer = b;
+	}
 }
