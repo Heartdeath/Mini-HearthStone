@@ -28,7 +28,7 @@ public class EffetBenedictionDePuissance extends EffetDecorator {
     	for(int i = 0;i < getJoueur().getListeCarteEnJeux().size() ;i++){
     		
     		
-    		getJoueur().getListeCarteEnJeux().get(getJoueur().getValChoisi()).setAttaque(getJoueur().getListeCarteEnJeux().get(getJoueur().getValChoisi()).getAttaque() + 3);
+    		getJoueur().getListeCarteEnJeux().get(0).setAttaque(getJoueur().getListeCarteEnJeux().get(0).getAttaque() + 3);
     	}
     }
 

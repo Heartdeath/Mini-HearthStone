@@ -28,7 +28,7 @@ public class EffetMetamorphose extends EffetDecorator{
 	public void useEffet() { 
 		for(int i = 0;i < getAdversaire().getListeCarteEnJeux().size() ;i++){
     		
-			getAdversaire().getListeCarteEnJeux().remove(getAdversaire().getValChoisi());
+			getAdversaire().getListeCarteEnJeux().remove(0);
     		
 			getAdversaire().getListeCarteEnJeux().add(new RecrueMainArgent_Mouton(getJoueur(), getAdversaire()));
     	}

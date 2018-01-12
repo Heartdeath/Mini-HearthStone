@@ -6,17 +6,17 @@ import power.Power;
 
 public class PowerMage extends Power {
 	
-	private String name;
+	private String nom;
 	private String effet;
 	
 	public PowerMage(Heros heros) {
 		this.heros = heros;
-		this.name = "Boule de feu";
+		this.nom = "Boule de feu";
 		this.effet = "Inflige un point de degat a un adversaire";
 	}
 
 	public String getNomPower() {
-		return this.name;
+		return this.nom;
 	}
 	
 	public String getPower() {
@@ -26,7 +26,7 @@ public class PowerMage extends Power {
 	public void utiliserHeroPower() {
 		for(int i = 0;i < getJoueurAdversaire().getListeCarteEnJeux().size() ;i++){
 			
-			getJoueurAdversaire().getListeCarteEnJeux().get(getJoueurAdversaire().getValChoisi()).setVie(getJoueurAdversaire().getListeCarteEnJeux().get(getJoueurAdversaire().getValChoisi()).getVie() - 1);
+			getJoueurAdversaire().getListeCarteEnJeux().get(0).setVie(getJoueurAdversaire().getListeCarteEnJeux().get(0).getVie() - 1);
     		}
 	}
 	

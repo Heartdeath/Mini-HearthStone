@@ -7,17 +7,17 @@ import power.Power;
 
 public class PowerPaladin extends Power {
 	
-	private String name;
+	private String nom;
 	private String effet;
 	
 	public PowerPaladin(Heros heros) {
 		this.heros = heros;
-		this.name = "Renfort";
+		this.nom = "Renfort";
 		this.effet = "Invoquant un serviteur \"recrue de la Main d argent\" ."; //1/1
 	}
 
 	public String getNomPower() {
-		return this.name;
+		return this.nom;
 	}
 	
 	public String getPower() {

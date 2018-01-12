@@ -27,7 +27,7 @@ public class EffetVolDeVie extends EffetDecorator {
 	public void useEffet() {
 		for(int i = 0;i < getAdversaire().getListeCarteEnJeux().size() ;i++){
 			
-			getAdversaire().getListeCarteEnJeux().get(getAdversaire().getValChoisi()).setVie(getAdversaire().getListeCarteEnJeux().get(getAdversaire().getValChoisi()).getVie() - getAttaque());
+			getAdversaire().getListeCarteEnJeux().get(0).setVie(getAdversaire().getListeCarteEnJeux().get(0).getVie() - getAttaque());
 			
 			if(getJoueur().getHeros().getVie() + getAttaque() > 30){
 				

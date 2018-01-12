@@ -42,7 +42,6 @@ public class Joueur {
 	private Etat etat;
 	private ArrayList<FactoryCarte> listeCarteDuJoueurMain;
 	private ArrayList<FactoryCarte> listeCarteEnJeux;
-	private int valChoisie; 
 
 	public Joueur(String nom, String nomHeros, Joueur jAdversaire) {
 		this.jAdversaire = jAdversaire;
@@ -51,12 +50,10 @@ public class Joueur {
 		this.mana = 1;
 		listeCarteDuJoueurMain = new ArrayList<>();
 		listeCarteEnJeux = new ArrayList<>();
-		this.valChoisie = 0;
 		this.selectionHeros(nomHeros);
 	}
 	
 	public Joueur(String name) {
-		this.jAdversaire = null;
 		this.nomJoueur = name;
 		this.enVie = true;
 		this.mana = 1;
@@ -127,14 +124,6 @@ public class Joueur {
 	public void setEtat(Etat etat) {
 		this.etat = etat;
 	}
-
-	public int getValChoisi() {
-		return 0;
-	}
-	
-	public void setValChoisi(int valChoisi){
-		this.valChoisie = valChoisi;
-	}
 	
 	public void selectionHeros(String h) {
 		if(h.equalsIgnoreCase("Mage")){
@@ -155,111 +144,112 @@ public class Joueur {
 	}
 	
 	public FactoryCarte tirageCarte(){
-		int min = 1 , max = 9;
+		int min = 1;
+		int max = 9;
 		int random = (int)(Math.random()*(max-min)) + min;
 		
-		FactoryCarte fc = null;
+		FactoryCarte factoryCarte = null;
 		
 		if(this.getHeros().typeHero() == "Mage"){
 			switch (random) {
-				case 1: fc = new ChefDeRaid(this, jAdversaire);
-						fc = new EffetPlus1Attaque(fc);
-				return fc;
+				case 1: factoryCarte = new ChefDeRaid(this, jAdversaire);
+						factoryCarte = new EffetPlus1Attaque(factoryCarte);
+				return factoryCarte;
 				
-				case 2: fc = new ChevaucheurDeLoup(this, jAdversaire);
-						fc = new EffetCharge(fc);
-				return fc;
+				case 2: factoryCarte = new ChevaucheurDeLoup(this, jAdversaire);
+						factoryCarte = new EffetCharge(factoryCarte);
+				return factoryCarte;
 				
-				case 3: fc = new SanglierBrocheroc(this, jAdversaire);
-				return fc;
+				case 3: factoryCarte = new SanglierBrocheroc(this, jAdversaire);
+				return factoryCarte;
 				
-				case 4: fc = new SoldatDuComteDeLor(this, jAdversaire);
-				        fc = new EffetProvocation(fc);
-				return fc;
+				case 4: factoryCarte = new SoldatDuComteDeLor(this, jAdversaire);
+				        factoryCarte = new EffetProvocation(factoryCarte);
+				return factoryCarte;
 				
-				case 5: fc = new YetiNoroit(this, jAdversaire);
-				return fc;
+				case 5: factoryCarte = new YetiNoroit(this, jAdversaire);
+				return factoryCarte;
 				
-				case 6: fc = new ExplosionDesArcanes(this, jAdversaire);
-						fc = new EffetExplosionDesArcanes(fc);
-				return fc;
+				case 6: factoryCarte = new ExplosionDesArcanes(this, jAdversaire);
+						factoryCarte = new EffetExplosionDesArcanes(factoryCarte);
+				return factoryCarte;
 				
-				case 7: fc = new ImageMiroir(this, jAdversaire);
-						fc = new EffetImageMiroir(fc);
-				return fc;
+				case 7: factoryCarte = new ImageMiroir(this, jAdversaire);
+						factoryCarte = new EffetImageMiroir(factoryCarte);
+				return factoryCarte;
 				
-				case 8: fc = new Metamorphose(this, jAdversaire);
-						fc = new EffetMetamorphose(fc);
-				return fc;
+				case 8: factoryCarte = new Metamorphose(this, jAdversaire);
+						factoryCarte = new EffetMetamorphose(factoryCarte);
+				return factoryCarte;
 			}
 		} else if(this.getHeros().typeHero() == "Guerrier"){
 			switch (random) {
-				case 1: fc = new ChefDeRaid(this, jAdversaire);
-						fc = new EffetPlus1Attaque(fc);
-				return fc;
+				case 1: factoryCarte = new ChefDeRaid(this, jAdversaire);
+						factoryCarte = new EffetPlus1Attaque(factoryCarte);
+				return factoryCarte;
 				
-				case 2: fc = new ChevaucheurDeLoup(this, jAdversaire);
-						fc = new EffetCharge(fc);
-				return fc;
+				case 2: factoryCarte = new ChevaucheurDeLoup(this, jAdversaire);
+						factoryCarte = new EffetCharge(factoryCarte);
+				return factoryCarte;
 				
-				case 3: fc = new SanglierBrocheroc(this, jAdversaire);
-				return fc;
+				case 3: factoryCarte = new SanglierBrocheroc(this, jAdversaire);
+				return factoryCarte;
 				
-				case 4: fc = new SoldatDuComteDeLor(this, jAdversaire);
-				        fc = new EffetProvocation(fc);
-				return fc;
+				case 4: factoryCarte = new SoldatDuComteDeLor(this, jAdversaire);
+				        factoryCarte = new EffetProvocation(factoryCarte);
+				return factoryCarte;
 				
-				case 5: fc = new YetiNoroit(this, jAdversaire);
-				return fc;
+				case 5: factoryCarte = new YetiNoroit(this, jAdversaire);
+				return factoryCarte;
 				
-				case 6: fc = new AvocatCommisDoffice(this, jAdversaire);
-						fc = new EffetProvocation(fc);
-				return fc;
+				case 6: factoryCarte = new AvocatCommisDoffice(this, jAdversaire);
+						factoryCarte = new EffetProvocation(factoryCarte);
+				return factoryCarte;
 				
-				case 7: fc = new MaitriseDuBlocage(this, jAdversaire);
-						fc = new EffetMaitriseDuBlocage(fc);
-				return fc;
+				case 7: factoryCarte = new MaitriseDuBlocage(this, jAdversaire);
+						factoryCarte = new EffetMaitriseDuBlocage(factoryCarte);
+				return factoryCarte;
 				
-				case 8: fc = new Tourbillon(this, jAdversaire);
-						fc = new EffetTourbillon(fc);
-				return fc;
+				case 8: factoryCarte = new Tourbillon(this, jAdversaire);
+						factoryCarte = new EffetTourbillon(factoryCarte);
+				return factoryCarte;
 			}
 		} else if(this.getHeros().typeHero() == "Paladin"){
 			switch (random) {
 			
-				case 1: fc = new ChefDeRaid(this, jAdversaire);
-						fc = new EffetPlus1Attaque(fc);
-				return fc;
+				case 1: factoryCarte = new ChefDeRaid(this, jAdversaire);
+						factoryCarte = new EffetPlus1Attaque(factoryCarte);
+				return factoryCarte;
 				
-				case 2: fc = new ChevaucheurDeLoup(this, jAdversaire);
-						fc = new EffetCharge(fc);
-				return fc;
+				case 2: factoryCarte = new ChevaucheurDeLoup(this, jAdversaire);
+						factoryCarte = new EffetCharge(factoryCarte);
+				return factoryCarte;
 				
-				case 3: fc = new SanglierBrocheroc(this, jAdversaire);
-				return fc;
+				case 3: factoryCarte = new SanglierBrocheroc(this, jAdversaire);
+				return factoryCarte;
 				
-				case 4: fc = new SoldatDuComteDeLor(this, jAdversaire);
-				        fc = new EffetProvocation(fc);
-				return fc;
+				case 4: factoryCarte = new SoldatDuComteDeLor(this, jAdversaire);
+				        factoryCarte = new EffetProvocation(factoryCarte);
+				return factoryCarte;
 				
-				case 5: fc = new YetiNoroit(this, jAdversaire);
-				return fc;
+				case 5: factoryCarte = new YetiNoroit(this, jAdversaire);
+				return factoryCarte;
 				
-				case 6: fc = new BenedictionDePuissance(this, jAdversaire);
-						fc = new EffetBenedictionDePuissance(fc);
-				return fc;
+				case 6: factoryCarte = new BenedictionDePuissance(this, jAdversaire);
+						factoryCarte = new EffetBenedictionDePuissance(factoryCarte);
+				return factoryCarte;
 				
-				case 7: fc = new ChampionFrisselame(this, jAdversaire);
-						fc = new EffetCharge(fc);
-						fc = new EffetVolDeVie(fc);
-				return fc;
+				case 7: factoryCarte = new ChampionFrisselame(this, jAdversaire);
+						factoryCarte = new EffetCharge(factoryCarte);
+						factoryCarte = new EffetVolDeVie(factoryCarte);
+				return factoryCarte;
 				
-				case 8: fc = new Consecration(this, jAdversaire);
-						fc = new EffetConsecration(fc);
-				return fc;
+				case 8: factoryCarte = new Consecration(this, jAdversaire);
+						factoryCarte = new EffetConsecration(factoryCarte);
+				return factoryCarte;
 			}
 		}
-		return fc;
+		return factoryCarte;
 	}
 	
 	
@@ -284,7 +274,6 @@ public class Joueur {
 	
 	public void ajoutCarteDansLaMain(){
 		FactoryCarte carteAjout = tirageCarte();
-		System.out.println(carteAjout.toString() + " a ete ajoute a votre main");
 		listeCarteDuJoueurMain.add(carteAjout);
 	}
 	
