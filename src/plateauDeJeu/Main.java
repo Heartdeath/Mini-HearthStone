@@ -15,9 +15,7 @@ public class Main {
 		Scanner scJoueur1 = new Scanner(System.in);
 		Scanner scJoueur2 = new Scanner(System.in);
 		Scanner sc = new Scanner(System.in);
-		//Creation des joueurs
 		
-		//joueur1
 		System.out.println("Joueur 1 choisir votre pseudo :");
 		String joueur1Nom = scJoueur1.nextLine();
 		
