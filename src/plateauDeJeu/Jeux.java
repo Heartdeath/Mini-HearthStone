@@ -3,7 +3,7 @@ package plateauDeJeu;
 
 
 import java.util.ArrayList;
-
+import java.util.Scanner;
 
 import cartes.FactoryCarte;
 import etat.EtatAttente;
@@ -121,4 +121,86 @@ public class Jeux {
 		
 		
 	}
+	
+	public void lancerLeJeu(Joueur joueur1, Joueur joueur2) {
+		
+		Scanner scJoueur1 = new Scanner(System.in);
+		Scanner scJoueur2 = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
+		
+		EtatJouer joue = new EtatJouer();
+		EtatAttente enAttente = new EtatAttente();
+		
+		int initialisation = this.initialisationPartie(joueur1, joueur2);
+		
+		if(initialisation == 1){
+			joue.etatJouer(joueur1);
+			enAttente.etatJouer(joueur2);
+			this.affichageDeLaPartie(joueur1, joueur2);
+			this.pointDeMana(joueur1);
+		} else {
+			joue.etatJouer(joueur2);
+			enAttente.etatJouer(joueur1);
+			this.affichageDeLaPartie(joueur2, joueur1);
+			this.pointDeMana(joueur2);
+		}
+		
+		
+		while(joueur1.getHeros().getVie() != 0 || joueur2.getHeros().getVie() != 0){
+			System.out.println("-------------------------------------------------------------------------------------");
+			System.out.println(" choisissez votre action : "
+					+ "\n 1 Voir sa main "
+					+ "\n 2 Attaquer Hero  "
+					+ "\n 3 HeroPower  "
+					+ "\n 4 Jouer une carte"
+					+ "\n 5 Fin de tour");
+			Joueur joueurEnJeu = joueur1;
+			Joueur joueurAdv = joueur2;
+			
+			if (joueur1.getEtat().toString().equals("En jeu")){
+				joueurEnJeu = joueur1;
+				joueurAdv = joueur2;
+			} else {
+				joueurEnJeu = joueur2;
+				joueurAdv = joueur1;
+			}
+			
+			int joueur1SelectionAction = scJoueur1.nextInt();
+			int mana = joueurEnJeu.getMana();
+			while(!((joueur1SelectionAction == 1) || (joueur1SelectionAction == 2) || (joueur1SelectionAction == 3)|| (joueur1SelectionAction == 4)|| (joueur1SelectionAction == 5))) {
+					System.out.println("Mauvaise saisie");
+					joueur1SelectionAction = scJoueur1.nextInt();
+			}
+		
+			if(joueur1SelectionAction == 1) {
+				joueurEnJeu.afficherCarteMain();
+			}else if(joueur1SelectionAction == 2) {
+				this.attaquerHero(joueurAdv.getHeros());
+			}else if(joueur1SelectionAction == 3) {
+				this.jouerHeroPower(joueurEnJeu.getHeros());
+			}else if (joueur1SelectionAction == 4) {
+				System.out.println("Veuillez saisir le num�ro de la carte :");
+				String idCarte = sc.nextLine();
+				System.out.println("Mana : " + mana);
+				for (FactoryCarte carte : joueurEnJeu.getListeCarteDuJoueurMain()){
+					if(!idCarte.equals("")){
+						if ( Integer.parseInt(idCarte) == joueurEnJeu.getListeCarteDuJoueurMain().indexOf(carte)){
+							if (this.coutManaCarte(joueurEnJeu, carte) == true){
+								this.plateau.add(carte);
+								this.jouerCarte(carte);							
+								mana = mana - carte.getMana();
+							} else {
+								System.out.println("mana insuffisant ");
+							}
+						}
+					}
+				}
+			}else if (joueur1SelectionAction == 5) {
+				 this.changementJoueur(joueur1, joueur2);
+			}else{
+				break;
+			}
+		}
+	}
+	
 }
