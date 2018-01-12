@@ -99,6 +99,6 @@ public class ImageMiroir extends FactoryCarte {
 	}
 	
 	public String toString(){
-		return "Image miroir | " +getMana()+"nombre de mana | "+" Sort |" ;
+		return "Image miroir -- " +getMana()+"nombre de mana -- "+" Sort --" ;
 	}
 }

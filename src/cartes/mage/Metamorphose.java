@@ -99,6 +99,6 @@ public class Metamorphose extends FactoryCarte {
 	}
 	
 	public String toString(){
-		return "Metamorphose | " +getMana()+"nombre de mana | "+" Sort |" ;
+		return "Metamorphose -- " +getMana()+"nombre de mana -- "+" Sort --" ;
 	}
 }

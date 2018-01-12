@@ -99,6 +99,6 @@ public class BenedictionDePuissance extends FactoryCarte{
 	}
 	
 	public String toString(){
-		return "Benediction de puissance | " +getMana()+"nombre de mana | "+" Sort |" ;
+		return "Benediction de puissance -- " +getMana()+"nombre de mana -- "+" Sort --" ;
 	}
 }
