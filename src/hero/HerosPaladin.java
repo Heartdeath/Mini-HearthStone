@@ -5,10 +5,6 @@ import power.Power;
 
 public class HerosPaladin extends Heros {
 
-	private Joueur jAdversaire;
-	private Joueur joueur;
-	private int vie;
-	private boolean peutEtreAttaquer;
 	
 	public HerosPaladin(Joueur jAdversaire, Joueur joueur){
 		this.joueur = joueur;

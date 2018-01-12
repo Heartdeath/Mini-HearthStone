@@ -5,9 +5,7 @@ import hero.Heros;
 import power.Power;
 
 public class PowerGuerrier extends Power {
-	
-	private String nom;
-	private String effet;
+
 	
 	public PowerGuerrier(Heros heros) {
 		this.heros = heros;

@@ -5,10 +5,6 @@ import power.Power;
 
 public class HerosMage extends Heros {
 
-	private Joueur jAdversaire;
-	private Joueur joueur;
-	private int vie;
-	private boolean peutEtreAttaquer;
 	
 	public HerosMage(Joueur jAdversaire, Joueur joueur){
 		this.joueur = joueur;

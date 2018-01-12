@@ -3,10 +3,13 @@ package power;
 import hero.Heros;
 /**
  * Classe abstraite utilisant qui utilise le design pattern decorator pour mettre
- * le hero power aux héros correspondant
+ * le hero power aux hï¿½ros correspondant
  *
  */
 public abstract class Power extends Heros{
+	
+	protected String nom;
+	protected String effet;
 	protected Heros heros;
 	
 	/**

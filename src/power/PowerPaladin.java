@@ -6,9 +6,7 @@ import hero.Heros;
 import power.Power;
 
 public class PowerPaladin extends Power {
-	
-	private String nom;
-	private String effet;
+
 	
 	public PowerPaladin(Heros heros) {
 		this.heros = heros;
