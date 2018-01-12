@@ -1,21 +1,18 @@
 package plateauDeJeu;
 
-
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import cartes.FactoryCarte;
 import etat.EtatAttente;
-import power.PowerGuerrier;
-import power.PowerMage;
-import power.PowerPaladin;
 import etat.EtatJouer;
 import etat.Joueur;
 import hero.Heros;
 
 public class Jeux {
+	
 	public ArrayList<FactoryCarte> plateau = new ArrayList<FactoryCarte>();
+	
 	public int initialisationPartie(Joueur joueur1, Joueur joueur2){
 		int min = 1;
 		int max = 3;
