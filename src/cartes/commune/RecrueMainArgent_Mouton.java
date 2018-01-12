@@ -99,7 +99,7 @@ public class RecrueMainArgent_Mouton extends FactoryCarte{
 	}
 	
 	public String toString(){
-		return "Serviteur uno onu | "+getAttaque()+" atk | "+getVie()+" hp |";
+		return "Serviteur uno onu | "+getAttaque()+" d'attaque | "+getVie()+" de vie |";
 	}
 
 }

@@ -29,12 +29,12 @@ import cartes.paladin.BenedictionDePuissance;
 import cartes.paladin.ChampionFrisselame;
 import cartes.paladin.Consecration;
 import hero.*;
-import power.PowerGuerrier;
-import power.PowerMage;
-import power.PowerPaladin;
+import power.*;
+
+
 
 public class Joueur {
-	private Joueur joueurAdv;
+	private Joueur jAdversaire;
 	private String nomJoueur;
 	private boolean enVie;
 	private int mana;
@@ -42,21 +42,21 @@ public class Joueur {
 	private Etat etat;
 	private ArrayList<FactoryCarte> listeCarteDuJoueurMain;
 	private ArrayList<FactoryCarte> listeCarteEnJeux;
-	private int valChoisie; //index de la carte cibl� pour un pouvoir/effet
+	private int valChoisie; 
 
-	public Joueur(String name, String heros, Joueur joueurAdv) {
-		this.joueurAdv = joueurAdv;
-		this.nomJoueur = name;
+	public Joueur(String nom, String nomHeros, Joueur jAdv) {
+		this.jAdversaire = jAdv;
+		this.nomJoueur = nom;
 		this.enVie = true;
 		this.mana = 1;
-		setHeros(heros);
 		listeCarteDuJoueurMain = new ArrayList<>();
 		listeCarteEnJeux = new ArrayList<>();
 		this.valChoisie = 0;
+		this.selectionHeros(nomHeros);
 	}
 	
 	public Joueur(String name) {
-		this.joueurAdv = null;
+		this.jAdversaire = null;
 		this.nomJoueur = name;
 		this.enVie = true;
 		this.mana = 1;
@@ -81,11 +81,11 @@ public class Joueur {
 	}
 	
 	public Joueur getJoueurAdv() {
-		return joueurAdv;
+		return jAdversaire;
 	}
 
 	public void setJoueurAdv(Joueur joueurAdv) {
-		this.joueurAdv = joueurAdv;
+		this.jAdversaire = joueurAdv;
 	}
 	
 	public boolean isEnVie() {
@@ -100,19 +100,8 @@ public class Joueur {
 		return heros;
 	}
 
-	public void setHeros(String heros) {
-		if(heros.equalsIgnoreCase("Mage")){
-			this.heros = new HerosMage(joueurAdv, this);
-			this.heros = new PowerMage(this.heros);
-		} else if(heros.equalsIgnoreCase("Guerrier")){
-			this.heros = new HerosGuerrier(joueurAdv, this);
-			this.heros = new PowerGuerrier(this.heros);
-		} else if(heros.equalsIgnoreCase("Paladin")){
-			this.heros = new HerosPaladin(joueurAdv, this);
-			this.heros = new PowerPaladin(this.heros);
-		}
-		System.out.println("Heros choisi +>" + getHeros());
-		System.out.println("Pouvoir du hero +>" +getHeros().getPower());
+	public void setHeros(Heros heros) {
+		this.heros = heros;
 	}
 
 	public String getName() {
@@ -147,6 +136,19 @@ public class Joueur {
 		this.valChoisie = valChoisi;
 	}
 	
+	public void selectionHeros(String h) {
+		if(h.equalsIgnoreCase("Mage")){
+			this.heros = new HerosMage(jAdversaire, this);
+			this.heros = new PowerMage(this.heros);
+		} else if(h.equalsIgnoreCase("Guerrier")){
+			this.heros = new HerosGuerrier(jAdversaire, this);
+			this.heros = new PowerGuerrier(this.heros);
+		} else if(h.equalsIgnoreCase("Paladin")){
+			this.heros = new HerosPaladin(jAdversaire, this);
+			this.heros = new PowerPaladin(this.heros);
+		}
+	}
+	
 	public FactoryCarte tirageCarte(){
 		int min = 1 , max = 9;
 		int random = (int)(Math.random()*(max-min)) + min;
@@ -155,77 +157,77 @@ public class Joueur {
 		
 		if(this.getHeros().typeHero() == "Mage"){
 			switch (random) {
-				case 1: fc = new ChefDeRaid(this, joueurAdv);
+				case 1: fc = new ChefDeRaid(this, jAdversaire);
 						fc = new EffetPlus1Attaque(fc);
 				return fc;
-				case 2: fc = new ChevaucheurDeLoup(this, joueurAdv);
+				case 2: fc = new ChevaucheurDeLoup(this, jAdversaire);
 						fc = new EffetCharge(fc);
 				return fc;
-				case 3: fc = new SanglierBrocheroc(this, joueurAdv);
+				case 3: fc = new SanglierBrocheroc(this, jAdversaire);
 				return fc;
-				case 4: fc = new SoldatDuComteDeLor(this, joueurAdv);
+				case 4: fc = new SoldatDuComteDeLor(this, jAdversaire);
 				        fc = new EffetProvocation(fc);
 				return fc;
-				case 5: fc = new YetiNoroit(this, joueurAdv);
+				case 5: fc = new YetiNoroit(this, jAdversaire);
 				return fc;
-				case 6: fc = new ExplosionDesArcanes(this, joueurAdv);
+				case 6: fc = new ExplosionDesArcanes(this, jAdversaire);
 						fc = new EffetExplosionDesArcanes(fc);
 				return fc;
-				case 7: fc = new ImageMiroir(this, joueurAdv);
+				case 7: fc = new ImageMiroir(this, jAdversaire);
 						fc = new EffetImageMiroir(fc);
 				return fc;
-				case 8: fc = new Metamorphose(this, joueurAdv);
+				case 8: fc = new Metamorphose(this, jAdversaire);
 						fc = new EffetMetamorphose(fc);
 				return fc;
 			}
 		} else if(this.getHeros().typeHero() == "Guerrier"){
 			switch (random) {
-				case 1: fc = new ChefDeRaid(this, joueurAdv);
+				case 1: fc = new ChefDeRaid(this, jAdversaire);
 						fc = new EffetPlus1Attaque(fc);
 				return fc;
-				case 2: fc = new ChevaucheurDeLoup(this, joueurAdv);
+				case 2: fc = new ChevaucheurDeLoup(this, jAdversaire);
 						fc = new EffetCharge(fc);
 				return fc;
-				case 3: fc = new SanglierBrocheroc(this, joueurAdv);
+				case 3: fc = new SanglierBrocheroc(this, jAdversaire);
 				return fc;
-				case 4: fc = new SoldatDuComteDeLor(this, joueurAdv);
+				case 4: fc = new SoldatDuComteDeLor(this, jAdversaire);
 				        fc = new EffetProvocation(fc);
 				return fc;
-				case 5: fc = new YetiNoroit(this, joueurAdv);
+				case 5: fc = new YetiNoroit(this, jAdversaire);
 				return fc;
-				case 6: fc = new AvocatCommisDoffice(this, joueurAdv);
+				case 6: fc = new AvocatCommisDoffice(this, jAdversaire);
 						fc = new EffetProvocation(fc);
 				return fc;
-				case 7: fc = new MaitriseDuBlocage(this, joueurAdv);
+				case 7: fc = new MaitriseDuBlocage(this, jAdversaire);
 						fc = new EffetMaitriseDuBlocage(fc);
 				return fc;
-				case 8: fc = new Tourbillon(this, joueurAdv);
+				case 8: fc = new Tourbillon(this, jAdversaire);
 						fc = new EffetTourbillon(fc);
 				return fc;
 			}
 		} else if(this.getHeros().typeHero() == "Paladin"){
 			switch (random) {
-				case 1: fc = new ChefDeRaid(this, joueurAdv);
+				case 1: fc = new ChefDeRaid(this, jAdversaire);
 						fc = new EffetPlus1Attaque(fc);
 				return fc;
-				case 2: fc = new ChevaucheurDeLoup(this, joueurAdv);
+				case 2: fc = new ChevaucheurDeLoup(this, jAdversaire);
 						fc = new EffetCharge(fc);
 				return fc;
-				case 3: fc = new SanglierBrocheroc(this, joueurAdv);
+				case 3: fc = new SanglierBrocheroc(this, jAdversaire);
 				return fc;
-				case 4: fc = new SoldatDuComteDeLor(this, joueurAdv);
+				case 4: fc = new SoldatDuComteDeLor(this, jAdversaire);
 				        fc = new EffetProvocation(fc);
 				return fc;
-				case 5: fc = new YetiNoroit(this, joueurAdv);
+				case 5: fc = new YetiNoroit(this, jAdversaire);
 				return fc;
-				case 6: fc = new BenedictionDePuissance(this, joueurAdv);
+				case 6: fc = new BenedictionDePuissance(this, jAdversaire);
 						fc = new EffetBenedictionDePuissance(fc);
 				return fc;
-				case 7: fc = new ChampionFrisselame(this, joueurAdv);
+				case 7: fc = new ChampionFrisselame(this, jAdversaire);
 						fc = new EffetCharge(fc);
 						fc = new EffetVolDeVie(fc);
 				return fc;
-				case 8: fc = new Consecration(this, joueurAdv);
+				case 8: fc = new Consecration(this, jAdversaire);
 						fc = new EffetConsecration(fc);
 				return fc;
 			}
@@ -234,48 +236,47 @@ public class Joueur {
 	}
 	
 	
-	public void initialiseMain(int rand){
+	public void initialisationDesCartesEnMain(int rand){
 		int pdM = getMana();
 		if(rand == 1){
-			addCardMain();
-			addCardMain();
-			addCardMain();
+			ajoutCarteDansLaMain();
+			ajoutCarteDansLaMain();
+			ajoutCarteDansLaMain();
 			setMana(pdM+1);
 		}
 		else if(rand == 2){
-			addCardMain();
-			addCardMain();
-			addCardMain();
+			ajoutCarteDansLaMain();
+			ajoutCarteDansLaMain();
+			ajoutCarteDansLaMain();
 		}
 	}
 	
 	
-	
-	public void addCardMain(){
+	public void ajoutCarteDansLaMain(){
 		FactoryCarte carteAjout = tirageCarte();
 		System.out.println(carteAjout.toString() + " a ete ajoute a votre main !");
 		listeCarteDuJoueurMain.add(carteAjout);
 	}
 	
-	public void addCardJeu(){
+	public void ajoutDeCarteEnJeu(){
 		int NumeroDeLaCarteDansLaMain = 1;
 		FactoryCarte carteAJouer = listeCarteDuJoueurMain.get(NumeroDeLaCarteDansLaMain);
 		listeCarteEnJeux.add(carteAJouer);
 	}
 
-	public void afficherCarteMain(){
+	public void affichageDesCartesEnMain(){
 		for(FactoryCarte c : listeCarteDuJoueurMain){
-			System.out.println("|" +listeCarteDuJoueurMain.indexOf(c) + "|" + c.toString() /*Faire les toString des cartes (en gros ajouter leur nom)*/);
+			System.out.println("|" +listeCarteDuJoueurMain.indexOf(c) + "|" + c.toString());
 		}
 	}
 	
-	public void afficherCardJeu(){
+	public void affichageDesCartesEnJeu(){
 		for(FactoryCarte c : listeCarteEnJeux){
-			System.out.println("|" +listeCarteEnJeux.indexOf(c) + "|" + c.toString() /*Faire les toString des cartes (en gros ajouter leur nom)*/);
+			System.out.println("|" +listeCarteEnJeux.indexOf(c) + "|" + c.toString());
 		}
 	}
 	
-	public void afficherInfoJoueur(){
+	public void affichageDesInfoJoueur(){
 		System.out.println("Vie restante : " + heros.getVie());
 		System.out.println("Mana         : " + getMana());
 		System.out.println("A vous "+getName()+" !");

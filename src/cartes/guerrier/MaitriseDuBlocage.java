@@ -99,6 +99,6 @@ public class MaitriseDuBlocage extends FactoryCarte  {
 	}
 	
 	public String toString(){
-		return "Maitrise du blocage | " +getNbMana()+"mana | "+" Sort |" ;
+		return "Maitrise du blocage | " +getNbMana()+"nombre de mana | "+" Sort |" ;
 	}
 }

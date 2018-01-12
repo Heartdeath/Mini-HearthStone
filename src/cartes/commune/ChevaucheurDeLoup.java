@@ -99,6 +99,6 @@ public class ChevaucheurDeLoup extends FactoryCarte {
 	}
 	
 	public String toString(){
-		return "Chevaucheur de loup | "+getAttaque()+" atk | "+getVie()+" hp | " +getNbMana()+" mana |";
+		return "Chevaucheur de loup | "+getAttaque()+" d'attaque | "+getVie()+" de vie | " +getNbMana()+" nombre de mana |";
 	}
 }

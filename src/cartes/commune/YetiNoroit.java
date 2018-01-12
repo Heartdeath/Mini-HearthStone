@@ -99,6 +99,6 @@ public class YetiNoroit extends FactoryCarte {
 	}
 	
 	public String toString(){
-		return "Yeti noroit | "+getAttaque()+" atk | "+getVie()+" hp | " +getNbMana()+" mana |" ;
+		return "Yeti noroit | "+getAttaque()+" d'attaque | "+getVie()+" de vie | " +getNbMana()+" nombre de mana |" ;
 	}
 }

@@ -99,6 +99,6 @@ public class SoldatDuComteDeLor extends FactoryCarte {
 	}
 	
 	public String toString(){
-		return "Soldat du comte-de-l or | "+getAttaque()+" atk | "+getVie()+" hp | " +getNbMana()+" mana |";
+		return "Soldat du comte-de-l or | "+getAttaque()+" d'attaque | "+getVie()+" de vie | " +getNbMana()+" nombre de mana |";
 	}
 }

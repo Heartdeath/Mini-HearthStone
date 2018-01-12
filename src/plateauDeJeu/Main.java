@@ -11,28 +11,25 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Jeux jeu = new Jeux();
+		Scanner scJ1 = new Scanner(System.in);
+		Scanner scJ2 = new Scanner(System.in);
 		
-		/*
-		 * Creation des joueurs
-		 */
+		//Creation des joueurs
 		
-		Scanner sc = new Scanner(System.in);
+		//joueur1
 		System.out.println("Joueur 1 choisir votre nom :");
-		String j1Nom = sc.nextLine();
-		System.out.println("Joueur 2 choisir votre nom :");
-		String j2Nom = sc.nextLine();
+		String j1Nom = scJ1.nextLine();
 		
 		System.out.println(j1Nom + " choisissez un heros !!! Entrez : "
 				+ "\n 1 pour le Mage"
 				+ "\n 2 pour le Guerrier"
 				+ "\n 3 pour le Paladin");
-		int j1SelectHeros = sc.nextInt();
+		int j1SelectHeros = scJ1.nextInt();
 		String j1Heros = null;
-		System.out.println(j1SelectHeros);
 		
 		while(!((j1SelectHeros == 1) || (j1SelectHeros == 2) || (j1SelectHeros == 3))) {
 				System.out.println("Mauvaise saisie, veuillez recommencer");
-				j1SelectHeros = sc.nextInt();
+				j1SelectHeros = scJ1.nextInt();
 		}
 			
 		if(j1SelectHeros == 1) {
@@ -43,17 +40,20 @@ public class Main {
 			j1Heros = "paladin";
 		}
 		
+		//joueur2
+		System.out.println("Joueur 2 choisir votre nom :");
+		String j2Nom = scJ2.nextLine();
+		
 		System.out.println(j2Nom + " choisissez un heros !!! Entrez : "
 				+ "\n 1 pour le Mage"
 				+ "\n 2 pour le Guerrier"
 				+ "\n 3 pour le Paladin");
-		int j2SelectHeros = sc.nextInt();
+		int j2SelectHeros = scJ2.nextInt();
 		String j2Heros = null;
-		System.out.println(j2SelectHeros);
 		
 		while(!((j2SelectHeros == 1) || (j2SelectHeros == 2) || (j2SelectHeros == 3))) {
 				System.out.println("Mauvaise saisie, veuillez recommencer");
-				j2SelectHeros = sc.nextInt();
+				j2SelectHeros = scJ2.nextInt();
 		}
 			
 		if(j2SelectHeros == 1) {
@@ -65,13 +65,10 @@ public class Main {
 		}
 		
 
-		// a ameliorer
-		Joueur j2 = null;
-		Joueur j1 = null;
-		j2 = new Joueur(j2Nom);
-		j1 = new Joueur(j1Nom,j1Heros, j2);
+		Joueur j2 = new Joueur(j2Nom);
+		Joueur j1 = new Joueur(j1Nom,j1Heros, j2);
 		j2.setJoueurAdv(j1);
-		j2.setHeros(j2Heros);
+		j2.selectionHeros(j2Heros);
 		
 		int initialisation = jeu.initialisationPartie(j1, j2);
 		
@@ -84,10 +81,6 @@ public class Main {
 		if(initialisation == 1){
 			joue.etatJouer(j1);
 			enAttente.etatJouer(j2);
-			
-			//clearscreen
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-			
 			jeu.affichageDeLaPartie(j1, j2);
 						
 			//test
@@ -98,10 +91,6 @@ public class Main {
 		} else {
 			joue.etatJouer(j2);
 			enAttente.etatJouer(j1);
-						
-			//clearscreen
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-			
 			jeu.affichageDeLaPartie(j2, j1);
 			
 			//test
@@ -112,7 +101,7 @@ public class Main {
 		}
 		
 		while(j1.getHeros().getVie() != 0 || j1.getHeros().getVie() != 0){
-			String choix = sc.nextLine();
+			String choix = scJ1.nextLine();
 			//if(choix.equalsIgnoreCase("attaqueCarte"))
 			
 			//if(choix.equalsIgnoreCase("attaqueHero"))
@@ -126,8 +115,6 @@ public class Main {
 			else
 				break;
 		}
-		
-		//TODO Scanner
 	}
 
 }

@@ -99,6 +99,6 @@ public class ExplosionDesArcanes extends FactoryCarte {
 	}
 	
 	public String toString(){
-		return "Explosion des arcanes | " +getNbMana()+"mana | "+" Sort |" ;
+		return "Explosion des arcanes | " +getNbMana()+"nombre de mana | "+" Sort |" ;
 	}
 }

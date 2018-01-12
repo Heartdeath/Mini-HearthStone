@@ -99,6 +99,6 @@ public class ChefDeRaid extends FactoryCarte {
 	}
 	
 	public String toString(){
-		return "Chef de raid | "+getAttaque()+" atk | "+getVie()+" hp | " +getNbMana()+" mana |";
+		return "Chef de raid | "+getAttaque()+" d'attaque | "+getVie()+" de vie | " +getNbMana()+" nombre de mana |";
 	}
 }

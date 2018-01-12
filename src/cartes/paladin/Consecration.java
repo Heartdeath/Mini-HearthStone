@@ -99,6 +99,6 @@ public class Consecration extends FactoryCarte {
 	}
 	
 	public String toString(){
-		return "Consecration | " +getNbMana()+"mana |" + "Sort |" ;
+		return "Consecration | " +getNbMana()+"nombre de mana |" + "Sort |" ;
 	}
 }

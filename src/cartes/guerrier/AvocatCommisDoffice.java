@@ -99,6 +99,6 @@ public class AvocatCommisDoffice extends FactoryCarte {
 	}
 	
 	public String toString(){
-		return "Avocat commis d'office | "+getAttaque()+" atk | "+getVie()+" hp | " +getNbMana()+" mana |" ;
+		return "Avocat commis d'office | "+getAttaque()+" d'attaque | "+getVie()+" de vie | " +getNbMana()+" nombre de mana |" ;
 	}
 }

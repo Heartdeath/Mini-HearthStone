@@ -99,6 +99,6 @@ public class SanglierBrocheroc extends FactoryCarte {
 	}
 	
 	public String toString(){
-		return "Sanglier Brocheroc | "+getAttaque()+" atk | "+getVie()+" hp | " +getNbMana()+" mana |";
+		return "Sanglier Brocheroc | "+getAttaque()+" d'attaque | "+getVie()+" de vie | " +getNbMana()+" nombre de mana |";
 	}
 }

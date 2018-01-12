@@ -12,7 +12,7 @@ public abstract class EffetDecorator extends FactoryCarte{
 	/**
 	 * @return le nom de l'effet
 	 */
-	public abstract String getName();
+	public abstract String getNom();
 	
 	/**
 	 * @return l'effet

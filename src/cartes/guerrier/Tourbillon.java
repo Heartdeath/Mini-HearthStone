@@ -99,6 +99,6 @@ public class Tourbillon extends FactoryCarte  {
 	}
 	
 	public String toString(){
-		return "Tourbillon | " +getNbMana()+"mana | "+" Sort |" ;
+		return "Tourbillon | " +getNbMana()+"nombre de mana | "+" Sort |" ;
 	}
 }

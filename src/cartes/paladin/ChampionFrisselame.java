@@ -99,6 +99,6 @@ public class ChampionFrisselame extends FactoryCarte {
 	}
 	
 	public String toString(){
-		return "Champion Frisselame | "+getAttaque()+" atk | "+getVie()+" hp | " +getNbMana()+" mana |" ;
+		return "Champion Frisselame | "+getAttaque()+" d'attaque | "+getVie()+" de vie | " +getNbMana()+" nombre de mana |" ;
 	}
 }

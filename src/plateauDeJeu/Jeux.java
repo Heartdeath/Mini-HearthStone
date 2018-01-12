@@ -10,19 +10,13 @@ public class Jeux {
 		int min = 1;
 		int max = 3;
 		int random = (int)(Math.random()*(max-min)) + min;
-		System.out.println("random == " + random);
 		if(random == 1){
-			j1.initialiseMain(random);
-			j2.initialiseMain(2);
+			j1.initialisationDesCartesEnMain(random);
+			j2.initialisationDesCartesEnMain(2);
 		} else {
-			j1.initialiseMain(random);
-			j2.initialiseMain(1);
+			j1.initialisationDesCartesEnMain(random);
+			j2.initialisationDesCartesEnMain(1);
 		}
-		System.out.println("--------- verif des mains ci dessous");
-		//verif des mains ci dessous
-		j1.afficherCarteMain();
-		System.out.println("---------");
-		j2.afficherCarteMain();
 		return random;
 	}
 	
@@ -31,15 +25,12 @@ public class Jeux {
 		EtatJouer joue = new EtatJouer();
 		EtatAttente enAttente = new EtatAttente();
 		
-		System.out.println("------------------Changement de Tour------------------");
+		System.out.println("------Changement de joueur------");
 		
 		if (j1.getEtat().toString().equals("En jeu") && j2.getEtat().toString().equals("En Attente")){
 			joue.etatJouer(j2);
 			enAttente.etatJouer(j1);
-			
-			//clearscreen
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-			j2.addCardMain();
+			j2.ajoutCarteDansLaMain();
 			
 			affichageDeLaPartie(j2, j1);
 			
@@ -50,10 +41,7 @@ public class Jeux {
 		}else if (j1.getEtat().toString().equals("En Attente") && j2.getEtat().toString().equals("En jeu")) {
 			joue.etatJouer(j1);
 			enAttente.etatJouer(j2);
-			
-			//clearscreen
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-			j1.addCardMain();
+			j1.ajoutCarteDansLaMain();
 			
 			affichageDeLaPartie(j1, j2);
 			
@@ -88,15 +76,15 @@ public class Jeux {
 	
 	public void affichageDeLaPartie(Joueur j, Joueur adversaire){
 		System.out.println("Carte de " +adversaire.getName()+ ":");
-		adversaire.afficherCardJeu();
+		adversaire.affichageDesCartesEnJeu();
 		System.out.println("-----------------------------------------------------------------------------------------------");
 		System.out.println("Vos carte en jeu :");
-		j.afficherCardJeu();
+		j.affichageDesCartesEnJeu();
 		System.out.println("-----------------------------------------------------------------------------------------------");
 		System.out.println("Vos carte en main :");
-		j.afficherCarteMain();
+		j.affichageDesCartesEnMain();
 		System.out.println("-----------------------------------------------------------------------------------------------");
-		j.afficherInfoJoueur();
+		j.affichageDesInfoJoueur();
 		System.out.println("-----------------------------------------------------------------------------------------------");
 	}
 }

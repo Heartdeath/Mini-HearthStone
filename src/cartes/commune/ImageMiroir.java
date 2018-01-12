@@ -99,6 +99,6 @@ public class ImageMiroir extends FactoryCarte{
 	}
 	
 	public String toString(){
-		return "Serviteur Dexu Zeor | "+getAttaque()+" atk | "+getVie()+" hp |";
+		return "Serviteur Dexu Zeor | "+getAttaque()+" d'attaque | "+getVie()+" de vie |";
 	}
 }
