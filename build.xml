@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Mini-hearthStone" default="main" basedir=".">
+
+    <property name="src.dir" location="src"/>
+    <property name="build.dir" location="build"/>
+    <property name="classes.dir" location="${build.dir}/classes"/>
+    <property name="jar.dir" location="${build.dir}/jar"/>
+    <property name="main-class" value="plateauDeJeu.Main"/>
+
+
+    <path id="classpath.lib">
+        <pathelement location="${scr.dir}"/>
+    </path>
+
+    <!--     Suppresion repertoire build    -->
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <!--     Compile    -->
+    <target name="compile" depends="clean">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes" includeantruntime="false"/>
+    </target>
+
+    <!--     Creation d'un jar    -->
+    <target name="jar" depends="compile">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/${ant.project.name}.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+                <attribute name="Class-Path" value="classpath.lib"/>
+            </manifest>
+        </jar>
+    </target>
+
+   <!--     Lance le programme     -->
+    <target name="run" depends="jar" description="Execution du main de Mini-hearthStone.jar" >
+        <java jar="build/jar/${ant.project.name}.jar" fork="true"/>
+    </target>
+
+    <!--     Main     -->
+    <target name="main" depends="run" description="Lance toutes les taches" />
+
+
+</project>
