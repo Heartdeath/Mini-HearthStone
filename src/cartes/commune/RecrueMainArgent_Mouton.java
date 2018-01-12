@@ -4,14 +4,7 @@ import cartes.FactoryCarte;
 import etat.Joueur;
 
 public class RecrueMainArgent_Mouton extends FactoryCarte{
-	
-	private Joueur joueur;
-	private Joueur jAdversaire;
-	private int vie;
-	private int mana;
-	private int attaque;
-	private boolean peutAttaquer;
-	private boolean peutEtreAttaquer;
+
 
 	public RecrueMainArgent_Mouton(Joueur joueur, Joueur jAdversaire) {
 		this.joueur = joueur;

@@ -4,14 +4,7 @@ import cartes.FactoryCarte;
 import etat.Joueur;
 
 public class MaitriseDuBlocage extends FactoryCarte  {
-	
-	private Joueur joueur;
-	private Joueur jAdversaire;
-	private int vie;
-	private int mana;
-	private int attaque;
-	private boolean peutAttaquer;
-	private boolean peutEtreAttaquer;
+
 
 	public MaitriseDuBlocage(Joueur joueur, Joueur jAdversaire) {
 		this.joueur = joueur;

@@ -4,14 +4,7 @@ import cartes.FactoryCarte;
 import etat.Joueur;
 
 public class BenedictionDePuissance extends FactoryCarte{
-	
-	private Joueur joueur;
-	private Joueur jAdversaire;
-	private int vie;
-	private int mana;
-	private int attaque;
-	private boolean peutAttaquer;
-	private boolean peutEtreAttaquer;
+
 	
 	public BenedictionDePuissance(Joueur joueur, Joueur jAdversaire) {
 		this.joueur = joueur;

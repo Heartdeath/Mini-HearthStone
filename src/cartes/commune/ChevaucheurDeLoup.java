@@ -5,13 +5,6 @@ import etat.Joueur;
 
 public class ChevaucheurDeLoup extends FactoryCarte {
 
-	private Joueur joueur;
-	private Joueur jAdversaire;
-	private int vie;
-	private int mana;
-	private int attaque;
-	private boolean peutAttaquer;
-	private boolean peutEtreAttaquer;
 
 	public ChevaucheurDeLoup(Joueur joueur, Joueur jAdversaire) {
 		this.joueur = joueur;

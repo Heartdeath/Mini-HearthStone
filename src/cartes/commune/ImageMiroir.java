@@ -5,13 +5,6 @@ import etat.Joueur;
 
 public class ImageMiroir extends FactoryCarte{
 
-	private Joueur joueur;
-	private Joueur jAdversaire;
-	private int vie;
-	private int mana;
-	private int attaque;
-	private boolean peutAttaquer;
-	private boolean peutEtreAttaquer;
 
 	public ImageMiroir(Joueur joueur, Joueur jAdversaire) {
 		this.joueur = joueur;
