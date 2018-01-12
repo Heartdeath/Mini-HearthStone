@@ -6,12 +6,12 @@ import etat.Joueur;
 
 public class EffetExplosionDesArcanes extends EffetDecorator {
     private String nom;
-    private String effect;
+    private String effet;
 
     public EffetExplosionDesArcanes(FactoryCarte fc) {
         this.fc = fc;
         this.nom = "ExplosionDesArcanes";
-        this.effect = "Inflige 1 point de degats a tous les serviteurs adverses";
+        this.effet = "Inflige 1 point de degats a tous les serviteurs adverses";
     }
 
     @Override
@@ -20,20 +20,23 @@ public class EffetExplosionDesArcanes extends EffetDecorator {
     }
 
     @Override
-    public String getEffect() {
-        return fc.getEffect()+" Explosion Des Arcanes | " +this.effect;
+    public String getEffet() {
+        return fc.getEffet()+" Explosion Des Arcanes -- " +this.effet;
     }
 
     @Override
-    public void useEffect() { 
+    public void useEffet() { 
     	for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
+    		
 			int life = c.getVie();
+			
 			c.setVie(life-1);
 		}
     }
 
     public String toString() {
-        return fc.toString() + " Cette carte possede un "+this.getEffect() + " |";
+    	
+        return fc.toString() + " Cette carte possede un "+this.getEffet() + " --";
     }
 
     @Override
@@ -57,8 +60,8 @@ public class EffetExplosionDesArcanes extends EffetDecorator {
     }
 
     @Override
-    public int getNbMana() {
-    		return fc.getNbMana();
+    public int getMana() {
+    		return fc.getMana();
     	}
 
     @Override
@@ -90,8 +93,8 @@ public class EffetExplosionDesArcanes extends EffetDecorator {
 	}
 
 	@Override
-	public void setJoueur(Joueur j) {
-		fc.setJoueur(j);
+	public void setJoueur(Joueur joueur) {
+		fc.setJoueur(joueur);
 	}
 	
 	@Override
@@ -100,7 +103,7 @@ public class EffetExplosionDesArcanes extends EffetDecorator {
 	}
 
 	@Override
-	public void setAdversaire(Joueur jAdv) {
-		fc.setAdversaire(jAdv);
+	public void setAdversaire(Joueur jAdversaire) {
+		fc.setAdversaire(jAdversaire);
 	}
 }

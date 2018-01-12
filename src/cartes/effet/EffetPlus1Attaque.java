@@ -5,12 +5,12 @@ import etat.Joueur;
 
 public class EffetPlus1Attaque extends EffetDecorator {
 	private String nom;
-	private String effect;
+	private String effet;
 	
 	public EffetPlus1Attaque(FactoryCarte fc) {
 		this.fc = fc;
 		this.nom = "Plus 1 attaque";
-		this.effect = "Plus 1 attaque a tous les serviteurs allies sur le plateau (tant que ce serviteur est vivant)";
+		this.effet = "Plus 1 attaque a tous les serviteurs allies sur le plateau (tant que ce serviteur est vivant)";
 	}
 
 	@Override
@@ -19,19 +19,21 @@ public class EffetPlus1Attaque extends EffetDecorator {
 	}
 
 	@Override
-	public String getEffect() {return fc.getEffect()+" | " +this.effect;}
+	public String getEffet() {return fc.getEffet()+" -- " +this.effet;}
 
 	@Override
-	public void useEffect() {
+	public void useEffet() {
 		for(FactoryCarte c : getJoueur().getListeCarteEnJeux()){
+			
 			int attack = c.getAttaque();
+			
 			c.setAttaque(attack+1);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return fc.toString() + " Cette carte possede un "+this.getEffect() + " |";
+		return fc.toString() + " Cette carte possede un "+this.getEffet() + " --";
 	}
 
     @Override
@@ -55,8 +57,8 @@ public class EffetPlus1Attaque extends EffetDecorator {
     }
 
     @Override
-    public int getNbMana() {
-    		return fc.getNbMana();
+    public int getMana() {
+    		return fc.getMana();
     	}
 
     @Override
@@ -88,8 +90,8 @@ public class EffetPlus1Attaque extends EffetDecorator {
 	}
 
 	@Override
-	public void setJoueur(Joueur j) {
-		fc.setJoueur(j);
+	public void setJoueur(Joueur joueur) {
+		fc.setJoueur(joueur);
 	}
 	
 	@Override
@@ -98,7 +100,7 @@ public class EffetPlus1Attaque extends EffetDecorator {
 	}
 
 	@Override
-	public void setAdversaire(Joueur jAdv) {
-		fc.setAdversaire(jAdv);
+	public void setAdversaire(Joueur jAdversaire) {
+		fc.setAdversaire(jAdversaire);
 	}
 }

@@ -8,16 +8,16 @@ public class ExplosionDesArcanes extends FactoryCarte {
 	private Joueur joueur;
 	private Joueur jAdversaire;
 	private int vie;
-	private int nbMana;
+	private int mana;
 	private int attaque;
 	private boolean peutAttaquer;
 	private boolean peutEtreAttaquer;
 
-	public ExplosionDesArcanes(Joueur j, Joueur jAdv) {
-		this.joueur = j;
-		this.jAdversaire = jAdv;
+	public ExplosionDesArcanes(Joueur joueur, Joueur jAdversaire) {
+		this.joueur = joueur;
+		this.jAdversaire = jAdversaire;
 		this.vie = 0;
-		this.nbMana = 2;
+		this.mana = 2;
 		this.attaque = 0;
 		this.peutAttaquer = false;
 		this.peutEtreAttaquer = false;
@@ -29,8 +29,8 @@ public class ExplosionDesArcanes extends FactoryCarte {
 	}
 
 	@Override
-	public void setJoueur(Joueur j) {
-		this.joueur = j;
+	public void setJoueur(Joueur joueur) {
+		this.joueur = joueur;
 	}
 	
 	@Override
@@ -39,8 +39,8 @@ public class ExplosionDesArcanes extends FactoryCarte {
 	}
 
 	@Override
-	public void setAdversaire(Joueur jAdv) {
-		this.jAdversaire = jAdv;
+	public void setAdversaire(Joueur jAdversaire) {
+		this.jAdversaire = jAdversaire;
 	}
 
 	@Override
@@ -54,13 +54,13 @@ public class ExplosionDesArcanes extends FactoryCarte {
 	}
 	
 	@Override
-	public int getNbMana() {
-		return nbMana;
+	public int getMana() {
+		return mana;
 	}
 
 	@Override
 	public void setNbMana(int mana) {
-		this.nbMana = mana;
+		this.mana = mana;
 	}
 	
 	@Override
@@ -94,11 +94,11 @@ public class ExplosionDesArcanes extends FactoryCarte {
 	}
 	
 	@Override
-	public String getEffect() {
+	public String getEffet() {
 		return "Effet : ";
 	}
 	
 	public String toString(){
-		return "Explosion des arcanes | " +getNbMana()+"nombre de mana | "+" Sort |" ;
+		return "Explosion des arcanes | " +getMana()+"nombre de mana | "+" Sort |" ;
 	}
 }

@@ -6,16 +6,16 @@ import etat.Joueur;
 
 public class Jeux {
 	
-	public int initialisationPartie(Joueur j1, Joueur j2){
+	public int initialisationPartie(Joueur joueur1, Joueur joueur2){
 		int min = 1;
 		int max = 3;
 		int random = (int)(Math.random()*(max-min)) + min;
 		if(random == 1){
-			j1.initialisationDesCartesEnMain(random);
-			j2.initialisationDesCartesEnMain(2);
+			joueur1.initialisationDesCartesEnMain(random);
+			joueur2.initialisationDesCartesEnMain(2);
 		} else {
-			j1.initialisationDesCartesEnMain(random);
-			j2.initialisationDesCartesEnMain(1);
+			joueur1.initialisationDesCartesEnMain(random);
+			joueur2.initialisationDesCartesEnMain(1);
 		}
 		return random;
 	}
@@ -25,7 +25,7 @@ public class Jeux {
 		EtatJouer joue = new EtatJouer();
 		EtatAttente enAttente = new EtatAttente();
 		
-		System.out.println("------Changement de joueur------");
+		System.out.println("-- Tour suivant --");
 		
 		if (j1.getEtat().toString().equals("En jeu") && j2.getEtat().toString().equals("En Attente")){
 			joue.etatJouer(j2);
@@ -54,7 +54,7 @@ public class Jeux {
 	
 	public void observationEffectCarte(){
 		//TODO DP Observer (et DP State)
-		//CEDRIC
+		
 	}
 	
 	public void coutManaCarteDiffPointDeManCourant(){
@@ -69,22 +69,30 @@ public class Jeux {
 		} else if (manaJoueur < 10){
 			j.setMana(manaJoueur+1);
 		} else {
-			System.out.println("Erreur - Mana hors norme, il ne faut pas tricher !");
+			System.out.println("Erreur");
 			j.setMana(1);
 		}
 	}
 	
-	public void affichageDeLaPartie(Joueur j, Joueur adversaire){
+	public void affichageDeLaPartie(Joueur joueur, Joueur adversaire){
 		System.out.println("Carte de " +adversaire.getName()+ ":");
 		adversaire.affichageDesCartesEnJeu();
-		System.out.println("-----------------------------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------------");
+		
 		System.out.println("Vos carte en jeu :");
-		j.affichageDesCartesEnJeu();
-		System.out.println("-----------------------------------------------------------------------------------------------");
+		
+		joueur.affichageDesCartesEnJeu();
+		
+		System.out.println("--------------------------------------------------------------------------------------");
+		
 		System.out.println("Vos carte en main :");
-		j.affichageDesCartesEnMain();
-		System.out.println("-----------------------------------------------------------------------------------------------");
-		j.affichageDesInfoJoueur();
-		System.out.println("-----------------------------------------------------------------------------------------------");
+		
+		joueur.affichageDesCartesEnMain();
+		
+		System.out.println("--------------------------------------------------------------------------------------");
+		
+		joueur.affichageDesInfoJoueur();
+		
+		System.out.println("--------------------------------------------------------------------------------------");
 	}
 }

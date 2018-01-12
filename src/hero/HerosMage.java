@@ -10,9 +10,9 @@ public class HerosMage extends Heros {
 	private int vie;
 	private boolean peutEtreAttaquer;
 	
-	public HerosMage(Joueur jAdv, Joueur j){
-		this.joueur = j;
-		this.jAdversaire = jAdv;
+	public HerosMage(Joueur jAdversaire, Joueur joueur){
+		this.joueur = joueur;
+		this.jAdversaire = jAdversaire;
 		this.vie = 30;
 		this.peutEtreAttaquer = true;
 	}

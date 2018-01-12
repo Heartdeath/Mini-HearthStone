@@ -5,12 +5,12 @@ import etat.Joueur;
 
 public class EffetConsecration extends EffetDecorator {
 	private String nom;
-	private String effect;
+	private String effet;
 	
 	public EffetConsecration(FactoryCarte fc) {
 		this.fc = fc;
 		this.nom = "Consecration";
-		this.effect = "Inflige 2 points de degats a TOUS les adversaires";
+		this.effet = "Inflige 2 points de degats a TOUS les adversaires";
 	}
 
 	@Override
@@ -19,20 +19,22 @@ public class EffetConsecration extends EffetDecorator {
 	}
 
 	@Override
-	public String getEffect() {
-		return fc.getEffect()+" Consecration | " +this.effect;
+	public String getEffet() {
+		return fc.getEffet()+" Consecration -- " +this.effet;
 	}
 
 	@Override
-	public void useEffect() { 
+	public void useEffet() { 
 		for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
+			
 			int life = c.getVie();
+			
 			c.setVie(life-2);
 		}
 	}
 	
 	public String toString() {
-		return fc.toString() + " Cette carte possede un "+this.getEffect() + " |";
+		return fc.toString() + " Cette carte possede un "+this.getEffet() + "--";
 	}
 
     @Override
@@ -56,8 +58,8 @@ public class EffetConsecration extends EffetDecorator {
     }
 
     @Override
-    public int getNbMana() {
-    		return fc.getNbMana();
+    public int getMana() {
+    		return fc.getMana();
     	}
 
     @Override
@@ -89,8 +91,8 @@ public class EffetConsecration extends EffetDecorator {
 	}
 
 	@Override
-	public void setJoueur(Joueur j) {
-		fc.setJoueur(j);
+	public void setJoueur(Joueur joueur) {
+		fc.setJoueur(joueur);
 	}
 	
 	@Override
@@ -99,7 +101,7 @@ public class EffetConsecration extends EffetDecorator {
 	}
 
 	@Override
-	public void setAdversaire(Joueur jAdv) {
-		fc.setAdversaire(jAdv);
+	public void setAdversaire(Joueur jAdversaire) {
+		fc.setAdversaire(jAdversaire);
 	}
 }

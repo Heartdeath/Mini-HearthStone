@@ -5,12 +5,12 @@ import etat.Joueur;
 
 public class EffetVolDeVie extends EffetDecorator {
 	private String nom;
-	private String effect;
+	private String effet;
 	
 	public EffetVolDeVie(FactoryCarte fc) {
 		this.fc = fc;
 		this.nom = "Vol de vie";
-		this.effect = "Vol " + fc.getAttaque() + " point de vie";
+		this.effet = "Vol " + fc.getAttaque() + " point de vie";
 	}
 
 	@Override
@@ -19,24 +19,29 @@ public class EffetVolDeVie extends EffetDecorator {
 	}
 
 	@Override
-	public String getEffect() {
-		return fc.getEffect()+" Vol de vie | " +this.effect;
+	public String getEffet() {
+		return fc.getEffet()+" Vol de vie -- " +this.effet;
 	}
 
 	@Override
-	public void useEffect() {
+	public void useEffet() {
 		for(int i = 0;i < getAdversaire().getListeCarteEnJeux().size() ;i++){
+			
 			getAdversaire().getListeCarteEnJeux().get(getAdversaire().getValChoisi()).setVie(getAdversaire().getListeCarteEnJeux().get(getAdversaire().getValChoisi()).getVie() - getAttaque());
+			
 			if(getJoueur().getHeros().getVie() + getAttaque() > 30){
+				
 				getJoueur().getHeros().setVie(30);
+				
 			}else{
+				
 				getJoueur().getHeros().setVie(getJoueur().getHeros().getVie() + getAttaque());
 			}
 		}
 	}
 	
 	public String toString() {
-		return fc.toString() + " Cette carte possede un "+this.getEffect() + " |";
+		return fc.toString() + " Cette carte possede un "+this.getEffet() + "--";
 	}
 	
     @Override
@@ -60,8 +65,8 @@ public class EffetVolDeVie extends EffetDecorator {
     }
 
     @Override
-    public int getNbMana() {
-    		return fc.getNbMana();
+    public int getMana() {
+    		return fc.getMana();
     	}
 
     @Override
@@ -93,8 +98,8 @@ public class EffetVolDeVie extends EffetDecorator {
 	}
 
 	@Override
-	public void setJoueur(Joueur j) {
-		fc.setJoueur(j);
+	public void setJoueur(Joueur joueur) {
+		fc.setJoueur(joueur);
 	}
 	
 	@Override
@@ -103,7 +108,7 @@ public class EffetVolDeVie extends EffetDecorator {
 	}
 
 	@Override
-	public void setAdversaire(Joueur jAdv) {
-		fc.setAdversaire(jAdv);
+	public void setAdversaire(Joueur jAdversaire) {
+		fc.setAdversaire(jAdversaire);
 	}
 }

@@ -7,12 +7,12 @@ import cartes.commune.ImageMiroir;
 
 public class EffetImageMiroir extends EffetDecorator{
     private String nom;
-    private String effect;
+    private String effet;
 
     public EffetImageMiroir(FactoryCarte fc) {
         this.fc = fc;
         this.nom = "Image miroir";
-        this.effect = "Invoque deux serviteurs 0/2 avec provocation";
+        this.effet = "Invoque deux serviteurs 0/2 avec provocation";
     }
 
     @Override
@@ -21,20 +21,24 @@ public class EffetImageMiroir extends EffetDecorator{
     }
 
     @Override
-    public String getEffect() {
-        return fc.getEffect()+" Image miroir | " +this.effect;
+    public String getEffet() {
+        return fc.getEffet()+" Image miroir -- " +this.effet;
     }
 
     @Override
-    public void useEffect() {
+    public void useEffet() {
+    	
     	FactoryCarte fc = new ImageMiroir(getJoueur(), getAdversaire());
-    	            fc = new EffetProvocation(fc);
-    	getJoueur().getListeCarteEnJeux().add(fc);
-    	getJoueur().getListeCarteEnJeux().add(fc);
+    	           
+    	fc = new EffetProvocation(fc);
+    	
+    	            getJoueur().getListeCarteEnJeux().add(fc);
+    	
+    	            getJoueur().getListeCarteEnJeux().add(fc);
     }
 
     public String toString() {
-        return fc.toString() + " Cette carte possede un "+this.getEffect() + " |";
+        return fc.toString() + " Cette carte possede un "+this.getEffet() + " --";
     }
 
     @Override
@@ -58,8 +62,8 @@ public class EffetImageMiroir extends EffetDecorator{
     }
 
     @Override
-    public int getNbMana() {
-    		return fc.getNbMana();
+    public int getMana() {
+    		return fc.getMana();
     	}
 
     @Override
@@ -91,8 +95,8 @@ public class EffetImageMiroir extends EffetDecorator{
 	}
 
 	@Override
-	public void setJoueur(Joueur j) {
-		fc.setJoueur(j);
+	public void setJoueur(Joueur joueur) {
+		fc.setJoueur(joueur);
 	}
 	
 	@Override
@@ -101,8 +105,8 @@ public class EffetImageMiroir extends EffetDecorator{
 	}
 
 	@Override
-	public void setAdversaire(Joueur jAdv) {
-		fc.setAdversaire(jAdv);
+	public void setAdversaire(Joueur jAdversaire) {
+		fc.setAdversaire(jAdversaire);
 	}
 
 }

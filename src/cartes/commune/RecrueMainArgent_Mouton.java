@@ -8,16 +8,16 @@ public class RecrueMainArgent_Mouton extends FactoryCarte{
 	private Joueur joueur;
 	private Joueur jAdversaire;
 	private int vie;
-	private int nbMana;
+	private int mana;
 	private int attaque;
 	private boolean peutAttaquer;
 	private boolean peutEtreAttaquer;
 
-	public RecrueMainArgent_Mouton(Joueur j, Joueur jAdv) {
-		this.joueur = j;
-		this.jAdversaire = jAdv;
+	public RecrueMainArgent_Mouton(Joueur joueur, Joueur jAdversaire) {
+		this.joueur = joueur;
+		this.jAdversaire = jAdversaire;
 		this.vie = 1;
-		this.nbMana = 0;
+		this.mana = 0;
 		this.attaque = 1;
 		this.peutAttaquer = false;
 		this.peutEtreAttaquer = true;
@@ -29,8 +29,8 @@ public class RecrueMainArgent_Mouton extends FactoryCarte{
 	}
 
 	@Override
-	public void setJoueur(Joueur j) {
-		this.joueur = j;
+	public void setJoueur(Joueur joueur) {
+		this.joueur = joueur;
 	}
 	
 	@Override
@@ -39,8 +39,8 @@ public class RecrueMainArgent_Mouton extends FactoryCarte{
 	}
 
 	@Override
-	public void setAdversaire(Joueur jAdv) {
-		this.jAdversaire = jAdv;
+	public void setAdversaire(Joueur jAdversaire) {
+		this.jAdversaire = jAdversaire;
 	}
 
 	@Override
@@ -54,13 +54,13 @@ public class RecrueMainArgent_Mouton extends FactoryCarte{
 	}
 	
 	@Override
-	public int getNbMana() {
-		return nbMana;
+	public int getMana() {
+		return mana;
 	}
 
 	@Override
 	public void setNbMana(int mana) {
-		this.nbMana = mana;
+		this.mana = mana;
 	}
 	
 	@Override
@@ -94,12 +94,12 @@ public class RecrueMainArgent_Mouton extends FactoryCarte{
 	}
 	
 	@Override
-	public String getEffect() {
+	public String getEffet() {
 		return "Effet : ";
 	}
 	
 	public String toString(){
-		return "Serviteur uno onu | "+getAttaque()+" d'attaque | "+getVie()+" de vie |";
+		return "Recrue Main Argent -- mouton -- "+getAttaque()+" d'attaque -- "+getVie()+" de vie --";
 	}
 
 }

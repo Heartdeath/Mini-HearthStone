@@ -7,12 +7,12 @@ import etat.Joueur;
 
 public class EffetProvocation extends EffetDecorator {
 	private String nom;
-	private String effect;
+	private String effet;
 	
 	public EffetProvocation(FactoryCarte fc) {
 		this.fc = fc;
 		this.nom = "Provocation";
-		this.effect = "Obliger d'attaquer cette cible";
+		this.effet = "Obliger d'attaquer cette cible";
 	}
 
 	@Override
@@ -21,27 +21,31 @@ public class EffetProvocation extends EffetDecorator {
 	}
 
 	@Override
-	public String getEffect() {
-		return fc.getEffect()+" Provocation | " +this.effect;
+	public String getEffet() {
+		return fc.getEffet()+" Provocation -- " +this.effet;
 	}
 
 	@Override
-	public void useEffect() {
-		System.out.println(effect);
+	public void useEffet() {
+		System.out.println(effet);
 		
 		getJoueur().getHeros().setPeutEtreAttaque(false);
 		
 		for(FactoryCarte c : getJoueur().getListeCarteEnJeux()){
-			if(c.getEffect().contains(getNom())){
+		
+			if(c.getEffet().contains(getNom())){
+				
 				setPeutEtreAttaquer(true);
+				
 			}else{
+				
 				setPeutEtreAttaquer(false);
 			}
 		}
 	}
 	
 	public String toString() {
-		return fc.toString() + " Cette carte possede un "+this.getEffect() + " |";
+		return fc.toString() + " Cette carte possede un "+this.getEffet() + " --";
 	}
 	
     @Override
@@ -65,8 +69,8 @@ public class EffetProvocation extends EffetDecorator {
     }
 
     @Override
-    public int getNbMana() {
-    		return fc.getNbMana();
+    public int getMana() {
+    		return fc.getMana();
     	}
 
     @Override
@@ -98,8 +102,8 @@ public class EffetProvocation extends EffetDecorator {
 	}
 
 	@Override
-	public void setJoueur(Joueur j) {
-		fc.setJoueur(j);
+	public void setJoueur(Joueur joueur) {
+		fc.setJoueur(joueur);
 	}
 	
 	@Override
@@ -108,7 +112,7 @@ public class EffetProvocation extends EffetDecorator {
 	}
 
 	@Override
-	public void setAdversaire(Joueur jAdv) {
-		fc.setAdversaire(jAdv);
+	public void setAdversaire(Joueur jAdversaire) {
+		fc.setAdversaire(jAdversaire);
 	}
 }

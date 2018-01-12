@@ -2,9 +2,8 @@ package power;
 
 import hero.Heros;
 /**
- * Classe abstraite utilisant le design pattern decorator pour l'ajout
- * du pouvoir aux héros correspondant
- * @author E145855N
+ * Classe abstraite utilisant qui utilise le design pattern decorator pour mettre
+ * le hero power aux h�ros correspondant
  *
  */
 public abstract class Power extends Heros{
@@ -16,7 +15,7 @@ public abstract class Power extends Heros{
 	public abstract String getNomPower();
 	
 	/**
-	 * Utilise le pouvoir du héros
+	 * Utiliser le hero power
 	 */
-	public abstract void usePower();
+	public abstract void utiliserHeroPower();
 }

@@ -10,9 +10,9 @@ public class HerosPaladin extends Heros {
 	private int vie;
 	private boolean peutEtreAttaquer;
 	
-	public HerosPaladin(Joueur jAdv, Joueur j){
-		this.joueur = j;
-		this.jAdversaire = jAdv;
+	public HerosPaladin(Joueur jAdversaire, Joueur joueur){
+		this.joueur = joueur;
+		this.jAdversaire = jAdversaire;
 		this.vie = 30;
 		this.peutEtreAttaquer = true;
 	}

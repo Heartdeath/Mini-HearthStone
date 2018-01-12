@@ -7,23 +7,23 @@ import power.Power;
 public class PowerGuerrier extends Power {
 	
 	private String name;
-	private String effect;
+	private String effet;
 	
 	public PowerGuerrier(Heros heros) {
 		this.heros = heros;
 		this.name = "Armure";
-		this.effect = "Confere 2 points d armure.";
+		this.effet = "Confere 2 points d armure.";
 	}
 
 	public String getNomPower() {return this.name;}
 	public String getPower() {return heros.getPower() + this.getNomPower();}
 
-	public void usePower() {
+	public void utiliserHeroPower() {
 		setVie(getVie()+2);
 	}
 	
 	public String toString(){
-		return heros.toString() + effect;
+		return heros.toString() + effet;
 	}
 
 	@Override

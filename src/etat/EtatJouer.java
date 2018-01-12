@@ -3,8 +3,8 @@ package etat;
 public class EtatJouer implements Etat{
 
 	@Override
-	public void etatJouer(Joueur j) {
-		j.setEtat(this);
+	public void etatJouer(Joueur joueur) {
+		joueur.setEtat(this);
 	}
 
 	@Override

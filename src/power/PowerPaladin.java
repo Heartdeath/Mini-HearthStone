@@ -8,12 +8,12 @@ import power.Power;
 public class PowerPaladin extends Power {
 	
 	private String name;
-	private String effect;
+	private String effet;
 	
 	public PowerPaladin(Heros heros) {
 		this.heros = heros;
 		this.name = "Renfort";
-		this.effect = "Invoquant un serviteur \"recrue de la Main d argent\" ."; //1/1
+		this.effet = "Invoquant un serviteur \"recrue de la Main d argent\" ."; //1/1
 	}
 
 	public String getNomPower() {
@@ -24,12 +24,12 @@ public class PowerPaladin extends Power {
 		return heros.getPower() + this.getNomPower();
 	}
 
-	public void usePower() {
+	public void utiliserHeroPower() {
 		getJoueur().getListeCarteEnJeux().add(new RecrueMainArgent_Mouton(getJoueur(), getJoueurAdversaire()));
 	}
 	
 	public String toString(){
-		return heros.toString() + effect;
+		return heros.toString() + effet;
 	}
 
 	@Override

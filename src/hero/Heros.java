@@ -3,51 +3,51 @@ package hero;
 import etat.Joueur;
 import power.Power;
 /**
- * Classe abstraite creant le heros du joueur
+ * Classe abstraite pour créer le heros du joueur
  * @author Pierre
  *
  */
 public abstract class Heros {
 	
 	/**
-	 * @return la vie du hÃ©ros
+	 * @return la vie que possède un héros
 	 */
 	public abstract int getVie();
 	
 	/**
-	 * Met a jour la vie du hÃ©ros
-	 * @param life etant la vie du hÃ©ros mise a jour
+	 * Met a jour la vie que possède un héro
+	 * @param life la vie après mis à jours que possède le héro
 	 */
 	public abstract void setVie(int life);
 	
 	/**
-	 * @return le type de hÃ©ros (Mage|Paladin|Guerrier)
+	 * @return le type de héros
 	 */
 	public abstract String typeHero();
 	
 	/**
-	 * @return le pouvoir du hÃ©ros
+	 * @return le  hero power
 	 */
 	public abstract String getPower();
 	
 	/**
-	 * @return le joueur jouant le hÃ©ro
+	 * @return le joueur qui joue le héro
 	 */
 	public abstract Joueur getJoueur();
 	
 	/**
-	 * @return le joueur adversaire ne jouant pas le hÃ©ro
+	 * @return le joueur adversaire qui ne joue pas le héro
 	 */
 	public abstract Joueur getJoueurAdversaire();
 	
 	/**
-	 * @return si le hÃ©ros peut Ãªtre attaquÃ© ou non
+	 * @return si le héros peut être attaqué ou pas
 	 */
 	public abstract boolean getPeutEtreAttaquer();
 	
 	/**
-	 * Met a jour si le hÃ©ros peut Ãªtre attaquÃ© ou non
-	 * @param b Ã©tant la valeur indiquant si le hÃ©ros peut Ãªtre attaquÃ© ou non
+	 * Met a jour si le héros peut être attaqué ou pas
+	 * @param b la valeur qui indique si un héro peut être attaqué ou pas
 	 */
 	public abstract void setPeutEtreAttaque(boolean b);
 	

@@ -17,10 +17,10 @@ public abstract class EffetDecorator extends FactoryCarte{
 	/**
 	 * @return l'effet
 	 */
-	public abstract String getEffect();
+	public abstract String getEffet();
 	
 	/**
 	 * Utilise l'effet
 	 */
-	public abstract void useEffect();
+	public abstract void useEffet();
 }

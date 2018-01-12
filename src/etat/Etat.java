@@ -2,7 +2,7 @@ package etat;
 
 public interface Etat {
 	
-	public void etatJouer(Joueur j);
+	public void etatJouer(Joueur joueur);
 	
 	public String toString();
 }

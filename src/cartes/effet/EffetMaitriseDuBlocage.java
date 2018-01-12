@@ -22,18 +22,20 @@ public class EffetMaitriseDuBlocage extends EffetDecorator{
     }
 
     @Override
-    public String getEffect() {
-        return fc.getEffect()+ " Maitrise du blocage | " +this.effect;
+    public String getEffet() {
+        return fc.getEffet()+ " Maitrise du blocage -- " +this.effect;
     }
 
     @Override
-    public void useEffect() {
+    public void useEffet() {
+    	
     	getJoueur().getHeros().setVie(getJoueur().getHeros().getVie() + 5);
+    	
     	getJoueur().tirageCarte();
     }
 
     public String toString() {
-        return fc.toString() + " Cette carte possede un "+this.getNom();
+      return fc.toString() + " Cette carte possede un "+this.getNom();
     }
 
     @Override
@@ -57,8 +59,8 @@ public class EffetMaitriseDuBlocage extends EffetDecorator{
     }
 
     @Override
-    public int getNbMana() {
-    		return fc.getNbMana();
+    public int getMana() {
+    		return fc.getMana();
     	}
 
     @Override
@@ -90,8 +92,8 @@ public class EffetMaitriseDuBlocage extends EffetDecorator{
 	}
 
 	@Override
-	public void setJoueur(Joueur j) {
-		fc.setJoueur(j);
+	public void setJoueur(Joueur joueur) {
+		fc.setJoueur(joueur);
 	}
 	
 	@Override
@@ -100,8 +102,8 @@ public class EffetMaitriseDuBlocage extends EffetDecorator{
 	}
 
 	@Override
-	public void setAdversaire(Joueur jAdv) {
-		fc.setAdversaire(jAdv);
+	public void setAdversaire(Joueur jAdversaire) {
+		fc.setAdversaire(jAdversaire);
 	}
 
 }

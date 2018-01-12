@@ -5,12 +5,12 @@ import etat.Joueur;
 
 public class EffetCharge extends EffetDecorator {
 	private String nom;
-	private String effect;
+	private String effet;
 	
 	public EffetCharge(FactoryCarte fc) {
 		this.fc = fc;
 		this.nom = "Charge";
-		this.effect = "Confere charge a un serviteur allie. Il ne peut pas attaquer de heros pendant ce tour";
+		this.effet = "Confere charge a un serviteur allie. Il ne peut pas attaquer de heros pendant ce tour";
 	}
 
 	@Override
@@ -19,17 +19,17 @@ public class EffetCharge extends EffetDecorator {
 	}
 
 	@Override
-	public String getEffect() {
-		return fc.getEffect()+" Charge | " +this.effect;
+	public String getEffet() {
+		return fc.getEffet()+" Charge -- " +this.effet;
 	}
 
 	@Override
-	public void useEffect() { 
+	public void useEffet() { 
 		setPeutAttaquer(true);
 	}
 	
 	public String toString() {
-		return fc.toString() + " Cette carte possede un "+this.getEffect() + " |";
+		return fc.toString() + " Cette carte possede un "+this.getEffet() + " --";
 	}
 
     @Override
@@ -53,8 +53,8 @@ public class EffetCharge extends EffetDecorator {
     }
 
     @Override
-    public int getNbMana() {
-    		return fc.getNbMana();
+    public int getMana() {
+    		return fc.getMana();
     	}
 
     @Override
@@ -86,8 +86,8 @@ public class EffetCharge extends EffetDecorator {
 	}
 
 	@Override
-	public void setJoueur(Joueur j) {
-		fc.setJoueur(j);
+	public void setJoueur(Joueur joueur) {
+		fc.setJoueur(joueur);
 	}
 	
 	@Override
@@ -96,7 +96,7 @@ public class EffetCharge extends EffetDecorator {
 	}
 
 	@Override
-	public void setAdversaire(Joueur jAdv) {
-		fc.setAdversaire(jAdv);
+	public void setAdversaire(Joueur jAdversaire) {
+		fc.setAdversaire(jAdversaire);
 	}
 }
