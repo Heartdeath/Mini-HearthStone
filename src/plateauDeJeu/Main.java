@@ -10,47 +10,70 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Jeux jeu1 = new Jeux();
+		Jeux jeu = new Jeux();
 		
 		/*
 		 * Creation des joueurs
 		 */
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Joueur 1 : Veuillez choisir un pseudo : ");
-		String joueur1Pseudo = sc.nextLine();
-		System.out.println("Joueur 2 : Veuillez choisir un pseudo : ");
-		String joueur2Pseudo = sc.nextLine();
+		System.out.println("Joueur 1 choisir votre nom :");
+		String j1Nom = sc.nextLine();
+		System.out.println("Joueur 2 choisir votre nom :");
+		String j2Nom = sc.nextLine();
 		
-		System.out.println("Joueur 1 : Veuillez choisir un heros (Mage|Guerrier|Paladin) : ");
-		String joueur1Heros = sc.nextLine();
-		while(!((joueur1Heros.equalsIgnoreCase("mage")) || (joueur1Heros.equalsIgnoreCase("paladin")) || (joueur1Heros.equalsIgnoreCase("guerrier")))){
-			System.out.println("Erreur lors de la saisis, veuillez choisir un bon heros !");
-			System.out.println("Joueur 1 : Veuillez choisir un heros (Mage|Guerrier|Paladin) : ");
-			joueur1Heros = sc.nextLine();
+		System.out.println(j1Nom + " choisissez un heros !!! Entrez : "
+				+ "\n 1 pour le Mage"
+				+ "\n 2 pour le Guerrier"
+				+ "\n 3 pour le Paladin");
+		int j1SelectHeros = sc.nextInt();
+		String j1Heros = null;
+		System.out.println(j1SelectHeros);
+		
+		while(!((j1SelectHeros == 1) || (j1SelectHeros == 2) || (j1SelectHeros == 3))) {
+				System.out.println("Mauvaise saisie, veuillez recommencer");
+				j1SelectHeros = sc.nextInt();
 		}
 			
-		System.out.println("Joueur 2 : Veuillez choisir un heros (Mage|Guerrier|Paladin) : ");
-		String joueur2Heros = sc.nextLine();
-		while(!((joueur2Heros.equalsIgnoreCase("mage")) || (joueur2Heros.equalsIgnoreCase("paladin")) || (joueur2Heros.equalsIgnoreCase("guerrier")))){
-			System.out.println("Erreur lors de la saisis, veuillez choisir un bon heros !");
-			System.out.println("Joueur 2 : Veuillez choisir un heros (Mage|Guerrier|Paladin) : ");
-			joueur2Heros = sc.nextLine();
+		if(j1SelectHeros == 1) {
+			j1Heros = "mage";
+		}else if(j1SelectHeros == 2) {
+			j1Heros = "guerrier";
+		}else if(j1SelectHeros == 3) {
+			j1Heros = "paladin";
 		}
 		
-		System.err.println("psd1+>"+joueur1Pseudo);
-		System.err.println("psd2+>"+joueur2Pseudo);
-		System.err.println("her1+>"+joueur1Heros);
-		System.err.println("her2+>"+joueur2Heros);
+		System.out.println(j2Nom + " choisissez un heros !!! Entrez : "
+				+ "\n 1 pour le Mage"
+				+ "\n 2 pour le Guerrier"
+				+ "\n 3 pour le Paladin");
+		int j2SelectHeros = sc.nextInt();
+		String j2Heros = null;
+		System.out.println(j2SelectHeros);
+		
+		while(!((j2SelectHeros == 1) || (j2SelectHeros == 2) || (j2SelectHeros == 3))) {
+				System.out.println("Mauvaise saisie, veuillez recommencer");
+				j2SelectHeros = sc.nextInt();
+		}
+			
+		if(j2SelectHeros == 1) {
+			j2Heros = "mage";
+		}else if(j2SelectHeros == 2) {
+			j2Heros = "guerrier";
+		}else if(j2SelectHeros == 3) {
+			j2Heros = "paladin";
+		}
+		
+
 		// a ameliorer
 		Joueur j2 = null;
 		Joueur j1 = null;
-		j2 = new Joueur(joueur2Pseudo);
-		j1 = new Joueur(joueur1Pseudo,joueur1Heros, j2);
+		j2 = new Joueur(j2Nom);
+		j1 = new Joueur(j1Nom,j1Heros, j2);
 		j2.setJoueurAdv(j1);
-		j2.setHeros(joueur2Heros);
+		j2.setHeros(j2Heros);
 		
-		int initialisation = jeu1.initialisationPartie(j1, j2);
+		int initialisation = jeu.initialisationPartie(j1, j2);
 		
 		EtatJouer joue = new EtatJouer();
 		EtatAttente enAttente = new EtatAttente();
@@ -65,13 +88,13 @@ public class Main {
 			//clearscreen
 			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 			
-			jeu1.affichageBoard(j1, j2);
+			jeu.affichageDeLaPartie(j1, j2);
 						
 			//test
 			System.out.println("------------------Etat de depart------------------");
 			System.out.println(j1.getName() +" : " + j1.getEtat());
 			System.out.println(j2.getName() +" : " + j2.getEtat());
-			jeu1.pointDeMana(j1);
+			jeu.pointDeMana(j1);
 		} else {
 			joue.etatJouer(j2);
 			enAttente.etatJouer(j1);
@@ -79,13 +102,13 @@ public class Main {
 			//clearscreen
 			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 			
-			jeu1.affichageBoard(j2, j1);
+			jeu.affichageDeLaPartie(j2, j1);
 			
 			//test
 			System.out.println("------------------Etat de depart------------------");
 			System.out.println(j1.getName() +" : " + j1.getEtat());
 			System.out.println(j2.getName() +" : " + j2.getEtat());
-			jeu1.pointDeMana(j2);
+			jeu.pointDeMana(j2);
 		}
 		
 		while(j1.getHeros().getVie() != 0 || j1.getHeros().getVie() != 0){
@@ -99,7 +122,7 @@ public class Main {
 			//if(choix.equalsIgnoreCase("joueHeroPower"))
 			
 			if(choix.equalsIgnoreCase("finTour"))
-				jeu1.changementDeTour(j1, j2);
+				jeu.changementJoueur(j1, j2);
 			else
 				break;
 		}

@@ -148,12 +148,12 @@ public class Joueur {
 	}
 	
 	public FactoryCarte tirageCarte(){
-		int lower = 1 , higher = 9;
-		int random = (int)(Math.random()*(higher-lower)) + lower;
+		int min = 1 , max = 9;
+		int random = (int)(Math.random()*(max-min)) + min;
 		
 		FactoryCarte fc = null;
-		Joueur j1 = this;
-		if(j1.getHeros().typeHero() == "Mage"){
+		
+		if(this.getHeros().typeHero() == "Mage"){
 			switch (random) {
 				case 1: fc = new ChefDeRaid(this, joueurAdv);
 						fc = new EffectPlus1AttaqueToutServiteurAllie(fc);
@@ -178,7 +178,7 @@ public class Joueur {
 						fc = new EffectMetamorphose(fc);
 				return fc;
 			}
-		} else if(j1.getHeros().typeHero() == "Guerrier"){
+		} else if(this.getHeros().typeHero() == "Guerrier"){
 			switch (random) {
 				case 1: fc = new ChefDeRaid(this, joueurAdv);
 						fc = new EffectPlus1AttaqueToutServiteurAllie(fc);
@@ -203,7 +203,7 @@ public class Joueur {
 						fc = new Effect1DegatTOUSServiteur(fc);
 				return fc;
 			}
-		} else if(j1.getHeros().typeHero() == "Paladin"){
+		} else if(this.getHeros().typeHero() == "Paladin"){
 			switch (random) {
 				case 1: fc = new ChefDeRaid(this, joueurAdv);
 						fc = new EffectPlus1AttaqueToutServiteurAllie(fc);
@@ -233,30 +233,23 @@ public class Joueur {
 		return fc;
 	}
 	
+	
 	public void initialiseMain(int rand){
 		int pdM = getMana();
 		if(rand == 1){
-			//methode de test
 			addCardMain();
 			addCardMain();
 			addCardMain();
 			setMana(pdM+1);
-			//verif carte en main
-			System.out.println("Carte en main de "+getName());
-			//verif mana
-			System.out.println("Mana : " + getMana());
-			//verif vie
-			System.out.println("Vie : " + getHeros().getVie());
 		}
 		else if(rand == 2){
 			addCardMain();
 			addCardMain();
 			addCardMain();
-			System.out.println("Carte en main de "+getName());
-			System.out.println("Mana : " + getMana());
-			System.out.println("Vie : " + getHeros().getVie());
 		}
 	}
+	
+	
 	
 	public void addCardMain(){
 		FactoryCarte carteAjout = tirageCarte();
@@ -270,7 +263,7 @@ public class Joueur {
 		listeCarteEnJeux.add(carteAJouer);
 	}
 
-	public void afficherCardMain(){
+	public void afficherCarteMain(){
 		for(FactoryCarte c : listeCarteDuJoueurMain){
 			System.out.println("|" +listeCarteDuJoueurMain.indexOf(c) + "|" + c.toString() /*Faire les toString des cartes (en gros ajouter leur nom)*/);
 		}
