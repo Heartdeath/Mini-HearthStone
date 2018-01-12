@@ -65,7 +65,7 @@ public class Joueur {
 		return listeCarteDuJoueurMain;
 	}
 
-	public void setListeCarteDuJoueurMain(ArrayList<FactoryCarte> listeCarteDuJoueurMain) {
+	public void setListeCarteMain(ArrayList<FactoryCarte> listeCarteDuJoueurMain) {
 		this.listeCarteDuJoueurMain = listeCarteDuJoueurMain;
 	}
 
@@ -73,7 +73,7 @@ public class Joueur {
 		return listeCarteEnJeux;
 	}
 
-	public void setListeCarteEnJeux(ArrayList<FactoryCarte> listeCarteEnJeux) {
+	public void setListeCarteJeux(ArrayList<FactoryCarte> listeCarteEnJeux) {
 		this.listeCarteEnJeux = listeCarteEnJeux;
 	}
 	
@@ -124,7 +124,11 @@ public class Joueur {
 	public void setEtat(Etat etat) {
 		this.etat = etat;
 	}
-	
+	public void afficherCarteMain(){
+		for(FactoryCarte c : listeCarteDuJoueurMain){
+			System.out.println("|" +listeCarteDuJoueurMain.indexOf(c) + "|" + c.toString() /*Faire les toString des cartes (en gros ajouter leur nom)*/);
+		}
+	}
 	public void selectionHeros(String h) {
 		if(h.equalsIgnoreCase("Mage")){
 			
@@ -253,49 +257,49 @@ public class Joueur {
 	}
 	
 	
-	public void initialisationDesCartesEnMain(int rand){
+	public void cartesEnMain(int rand){
 		int pointDeMana = getMana();
 		if(rand == 1){
 			
-			ajoutCarteDansLaMain();
-			ajoutCarteDansLaMain();
-			ajoutCarteDansLaMain();
+			ajoutCartesMain();
+			ajoutCartesMain();
+			ajoutCartesMain();
 			setMana(pointDeMana+1);
 			
 		}
 		else if(rand == 2){
 			
-			ajoutCarteDansLaMain();
-			ajoutCarteDansLaMain();
-			ajoutCarteDansLaMain();
+			ajoutCartesMain();
+			ajoutCartesMain();
+			ajoutCartesMain();
 		}
 	}
 	
 	
-	public void ajoutCarteDansLaMain(){
+	public void ajoutCartesMain(){
 		FactoryCarte carteAjout = tirageCarte();
 		listeCarteDuJoueurMain.add(carteAjout);
 	}
 	
-	public void ajoutDeCarteEnJeu(){
+	public void ajoutCarteJeu(){
 		int NumeroDeLaCarteDansLaMain = 1;
 		FactoryCarte carteAJouer = listeCarteDuJoueurMain.get(NumeroDeLaCarteDansLaMain);
 		listeCarteEnJeux.add(carteAJouer);
 	}
 
-	public void affichageDesCartesEnMain(){
+	public void affichageCartesMain(){
 		for(FactoryCarte c : listeCarteDuJoueurMain){
 			System.out.println("--" +listeCarteDuJoueurMain.indexOf(c) + "--" + c.toString());
 		}
 	}
 	
-	public void affichageDesCartesEnJeu(){
+	public void affichageCartesJeu(){
 		for(FactoryCarte c : listeCarteEnJeux){
 			System.out.println("--" +listeCarteEnJeux.indexOf(c) + "--" + c.toString());
 		}
 	}
 	
-	public void affichageDesInfoJoueur(){
+	public void affichageInfoJoueur(){
 		System.out.println("Vie  : " + heros.getVie());
 		System.out.println("Mana : " + getMana());
 		System.out.println("A votre tour "+getName());

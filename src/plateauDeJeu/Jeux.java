@@ -1,21 +1,31 @@
 package plateauDeJeu;
 
+
+
+import java.util.ArrayList;
+
+
+import cartes.FactoryCarte;
 import etat.EtatAttente;
+import power.PowerGuerrier;
+import power.PowerMage;
+import power.PowerPaladin;
 import etat.EtatJouer;
 import etat.Joueur;
+import hero.Heros;
 
 public class Jeux {
-	
+	public ArrayList<FactoryCarte> plateau = new ArrayList<FactoryCarte>();
 	public int initialisationPartie(Joueur joueur1, Joueur joueur2){
 		int min = 1;
 		int max = 3;
 		int random = (int)(Math.random()*(max-min)) + min;
 		if(random == 1){
-			joueur1.initialisationDesCartesEnMain(random);
-			joueur2.initialisationDesCartesEnMain(2);
+			joueur1.cartesEnMain(random);
+			joueur2.cartesEnMain(2);
 		} else {
-			joueur1.initialisationDesCartesEnMain(random);
-			joueur2.initialisationDesCartesEnMain(1);
+			joueur1.cartesEnMain(random);
+			joueur2.cartesEnMain(1);
 		}
 		return random;
 	}
@@ -30,7 +40,7 @@ public class Jeux {
 		if (j1.getEtat().toString().equals("En jeu") && j2.getEtat().toString().equals("En Attente")){
 			joue.etatJouer(j2);
 			enAttente.etatJouer(j1);
-			j2.ajoutCarteDansLaMain();
+			j2.ajoutCartesMain();
 			
 			affichageDeLaPartie(j2, j1);
 			
@@ -41,7 +51,7 @@ public class Jeux {
 		}else if (j1.getEtat().toString().equals("En Attente") && j2.getEtat().toString().equals("En jeu")) {
 			joue.etatJouer(j1);
 			enAttente.etatJouer(j2);
-			j1.ajoutCarteDansLaMain();
+			j1.ajoutCartesMain();
 			
 			affichageDeLaPartie(j1, j2);
 			
@@ -52,17 +62,33 @@ public class Jeux {
 		}
 	}
 	
-	public void observationEffectCarte(){
-		//TODO DP Observer (et DP State)
+	public void observationEffectCarte(FactoryCarte carte){
+		System.out.println(carte.getEffet());
 		
 	}
+
+	public void jouerCarte(FactoryCarte carte){
+		observationEffectCarte(carte);
+	}
 	
-	public void coutManaCarteDiffPointDeManCourant(){
-		//TODO Verifier qu'il y a assez de mana pour jouer les cartes
+	public void jouerHeroPower(Heros h){
+		System.out.println(h.getPower());
+	}
+	
+	public void attaquerHero(Heros h){
+		System.out.println(h.getJoueurAdversaire().getName());
+	}
+	
+	public boolean coutManaCarte(Joueur joueur, FactoryCarte carte){
+		if (joueur.getMana() >= carte.getMana()){
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public void pointDeMana(Joueur j){
-		//TODO +1 par tour (max 10)
+		
 		int manaJoueur = j.getMana();
 		if(manaJoueur == 10){
 			j.setMana(10);
@@ -76,23 +102,23 @@ public class Jeux {
 	
 	public void affichageDeLaPartie(Joueur joueur, Joueur adversaire){
 		System.out.println("Carte de " +adversaire.getName()+ ":");
-		adversaire.affichageDesCartesEnJeu();
+		adversaire.affichageCartesJeu();
 		System.out.println("-------------------------------------------------------------------------------------");
 		
 		System.out.println("Vos carte en jeu :");
 		
-		joueur.affichageDesCartesEnJeu();
+		joueur.affichageCartesJeu();
 		
 		System.out.println("--------------------------------------------------------------------------------------");
 		
 		System.out.println("Vos carte en main :");
 		
-		joueur.affichageDesCartesEnMain();
+		joueur.affichageCartesMain();
 		
 		System.out.println("--------------------------------------------------------------------------------------");
 		
-		joueur.affichageDesInfoJoueur();
+		joueur.affichageInfoJoueur();
 		
-		System.out.println("--------------------------------------------------------------------------------------");
+		
 	}
 }
