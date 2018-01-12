@@ -1,4 +1,4 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
 /**

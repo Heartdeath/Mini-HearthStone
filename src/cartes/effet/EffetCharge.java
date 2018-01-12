@@ -1,16 +1,16 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
 import etat.Joueur;
 
-public class EffetConsecration extends EffetDecorator {
+public class EffetCharge extends EffetDecorator {
 	private String name;
 	private String effect;
 	
-	public EffetConsecration(FactoryCarte fc) {
+	public EffetCharge(FactoryCarte fc) {
 		this.fc = fc;
-		this.name = "Consecration";
-		this.effect = "Inflige 2 points de degats a TOUS les adversaires";
+		this.name = "Charge";
+		this.effect = "Confere charge a un serviteur allie. Il ne peut pas attaquer de heros pendant ce tour";
 	}
 
 	@Override
@@ -22,15 +22,12 @@ public class EffetConsecration extends EffetDecorator {
 	@Override
 	public String getEffect() {
 		// TODO Auto-generated method stub
-		return fc.getEffect()+" Consecration | " +this.effect;
+		return fc.getEffect()+" Charge | " +this.effect;
 	}
 
 	@Override
 	public void useEffect() { 
-		for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
-			int life = c.getVie();
-			c.setVie(life-2);
-		}
+		setPeutAttaquer(true);
 	}
 	
 	public String toString() {
@@ -41,32 +38,32 @@ public class EffetConsecration extends EffetDecorator {
 	public int getAttaque() {return fc.getAttaque();}
 
 	@Override
-	public void setAttaque(int atk) {}
+	public void setAttaque(int atk) {fc.setAttaque(atk);}
 
 	@Override
 	public int getVie() {return fc.getVie();}
 
 	@Override
-	public void setVie(int hp) {}
+	public void setVie(int hp) {fc.setVie(hp);}
 
 	@Override
 	public int getNbMana() {return fc.getNbMana();}
 
 	@Override
-	public void setPeutAttaquer(boolean b) {}
+	public void setPeutAttaquer(boolean b) {fc.setPeutAttaquer(b);}
 
 	@Override
 	public boolean getPeutAttaquer() {return fc.getPeutEtreAttaquer();}
 
 	@Override
-	public void setPeutEtreAttaquer(boolean b) {}
+	public void setPeutEtreAttaquer(boolean b) {fc.setPeutEtreAttaquer(b);}
 
 	@Override
 	public boolean getPeutEtreAttaquer() {return fc.getPeutEtreAttaquer();}
 	
 	@Override
 	public void setNbMana(int mana) {fc.setNbMana(mana);}
-
+	
 	@Override
 	public Joueur getJoueur() {return fc.getJoueur();}
 

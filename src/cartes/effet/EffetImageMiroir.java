@@ -1,17 +1,20 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
+import cartes.commune.ImageMiroir;
 import etat.Joueur;
 
-
-public class EffetExplosionDesArcanes extends EffetDecorator {
+/**
+ * Created by E178220S on 10/01/18.
+ */
+public class EffetImageMiroir extends EffetDecorator{
     private String name;
     private String effect;
 
-    public EffetExplosionDesArcanes(FactoryCarte fc) {
+    public EffetImageMiroir(FactoryCarte fc) {
         this.fc = fc;
-        this.name = "ExplosionDesArcanes";
-        this.effect = "Inflige 1 point de degats a tous les serviteurs adverses";
+        this.name = "Image miroir";
+        this.effect = "Invoque deux serviteurs 0/2 avec provocation";
     }
 
     @Override
@@ -23,15 +26,15 @@ public class EffetExplosionDesArcanes extends EffetDecorator {
     @Override
     public String getEffect() {
         // TODO Auto-generated method stub
-        return fc.getEffect()+" Explosion Des Arcanes | " +this.effect;
+        return fc.getEffect()+" Image miroir | " +this.effect;
     }
 
     @Override
-    public void useEffect() { 
-    	for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
-			int life = c.getVie();
-			c.setVie(life-1);
-		}
+    public void useEffect() {
+    	FactoryCarte fc = new ImageMiroir(getJoueur(), getAdversaire());
+    	            fc = new EffetProvocation(fc);
+    	getJoueur().getListeCarteEnJeux().add(fc);
+    	getJoueur().getListeCarteEnJeux().add(fc);
     }
 
     public String toString() {
@@ -79,4 +82,5 @@ public class EffetExplosionDesArcanes extends EffetDecorator {
 
 	@Override
 	public void setAdversaire(Joueur jAdv) {fc.setAdversaire(jAdv);}
+
 }

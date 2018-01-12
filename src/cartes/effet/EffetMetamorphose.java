@@ -1,16 +1,17 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
+import cartes.commune.RecrueMainArgent_Mouton;
 import etat.Joueur;
 
-public class EffetCharge extends EffetDecorator {
+public class EffetMetamorphose extends EffetDecorator{
 	private String name;
 	private String effect;
 	
-	public EffetCharge(FactoryCarte fc) {
+	public EffetMetamorphose(FactoryCarte fc) {
 		this.fc = fc;
-		this.name = "Charge";
-		this.effect = "Confere charge a un serviteur allie. Il ne peut pas attaquer de heros pendant ce tour";
+		this.name = "Metamorphose";
+		this.effect = "Transforme un serviteur en mouton 1/1 ";
 	}
 
 	@Override
@@ -22,12 +23,15 @@ public class EffetCharge extends EffetDecorator {
 	@Override
 	public String getEffect() {
 		// TODO Auto-generated method stub
-		return fc.getEffect()+" Charge | " +this.effect;
+		return fc.getEffect()+" Metamorphose | " +this.effect;
 	}
 
 	@Override
 	public void useEffect() { 
-		setPeutAttaquer(true);
+		for(int i = 0;i < getAdversaire().getListeCarteEnJeux().size() ;i++){
+    		getAdversaire().getListeCarteEnJeux().remove(getAdversaire().getValChoisi());
+    		getAdversaire().getListeCarteEnJeux().add(new RecrueMainArgent_Mouton(getJoueur(), getAdversaire()));
+    	}
 	}
 	
 	public String toString() {
@@ -38,32 +42,32 @@ public class EffetCharge extends EffetDecorator {
 	public int getAttaque() {return fc.getAttaque();}
 
 	@Override
-	public void setAttaque(int atk) {fc.setAttaque(atk);}
+	public void setAttaque(int atk) {}
 
 	@Override
 	public int getVie() {return fc.getVie();}
 
 	@Override
-	public void setVie(int hp) {fc.setVie(hp);}
+	public void setVie(int hp) {}
 
 	@Override
 	public int getNbMana() {return fc.getNbMana();}
 
 	@Override
-	public void setPeutAttaquer(boolean b) {fc.setPeutAttaquer(b);}
+	public void setPeutAttaquer(boolean b) {}
 
 	@Override
 	public boolean getPeutAttaquer() {return fc.getPeutEtreAttaquer();}
 
 	@Override
-	public void setPeutEtreAttaquer(boolean b) {fc.setPeutEtreAttaquer(b);}
+	public void setPeutEtreAttaquer(boolean b) {}
 
 	@Override
 	public boolean getPeutEtreAttaquer() {return fc.getPeutEtreAttaquer();}
 	
 	@Override
 	public void setNbMana(int mana) {fc.setNbMana(mana);}
-	
+
 	@Override
 	public Joueur getJoueur() {return fc.getJoueur();}
 

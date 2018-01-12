@@ -1,17 +1,17 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
-
 import etat.Joueur;
 
-public class EffetTourbillon extends EffetDecorator {
-	private String name;
+
+public class EffetExplosionDesArcanes extends EffetDecorator {
+    private String name;
     private String effect;
 
-    public EffetTourbillon(FactoryCarte fc) {
+    public EffetExplosionDesArcanes(FactoryCarte fc) {
         this.fc = fc;
-        this.name = "Tourbillon";
-        this.effect = "Inflige 1 point de degat a TOUS les serviteurs";
+        this.name = "ExplosionDesArcanes";
+        this.effect = "Inflige 1 point de degats a tous les serviteurs adverses";
     }
 
     @Override
@@ -23,15 +23,11 @@ public class EffetTourbillon extends EffetDecorator {
     @Override
     public String getEffect() {
         // TODO Auto-generated method stub
-        return fc.getEffect()+" Tourbillon | " +this.effect;
+        return fc.getEffect()+" Explosion Des Arcanes | " +this.effect;
     }
 
     @Override
     public void useEffect() { 
-    	for(FactoryCarte c : getJoueur().getListeCarteEnJeux()){
-			int life = c.getVie();
-			c.setVie(life-1);
-		}
     	for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
 			int life = c.getVie();
 			c.setVie(life-1);
@@ -68,11 +64,11 @@ public class EffetTourbillon extends EffetDecorator {
 
     @Override
     public boolean getPeutEtreAttaquer() {return fc.getPeutEtreAttaquer();}
-    
+
     @Override
 	public void setNbMana(int mana) {fc.setNbMana(mana);}
 
-    @Override
+	@Override
 	public Joueur getJoueur() {return fc.getJoueur();}
 
 	@Override

@@ -1,17 +1,16 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
-import cartes.commune.RecrueMainArgent_Mouton;
 import etat.Joueur;
 
-public class EffetMetamorphose extends EffetDecorator{
+public class EffetConsecration extends EffetDecorator {
 	private String name;
 	private String effect;
 	
-	public EffetMetamorphose(FactoryCarte fc) {
+	public EffetConsecration(FactoryCarte fc) {
 		this.fc = fc;
-		this.name = "Metamorphose";
-		this.effect = "Transforme un serviteur en mouton 1/1 ";
+		this.name = "Consecration";
+		this.effect = "Inflige 2 points de degats a TOUS les adversaires";
 	}
 
 	@Override
@@ -23,15 +22,15 @@ public class EffetMetamorphose extends EffetDecorator{
 	@Override
 	public String getEffect() {
 		// TODO Auto-generated method stub
-		return fc.getEffect()+" Metamorphose | " +this.effect;
+		return fc.getEffect()+" Consecration | " +this.effect;
 	}
 
 	@Override
 	public void useEffect() { 
-		for(int i = 0;i < getAdversaire().getListeCarteEnJeux().size() ;i++){
-    		getAdversaire().getListeCarteEnJeux().remove(getAdversaire().getValChoisi());
-    		getAdversaire().getListeCarteEnJeux().add(new RecrueMainArgent_Mouton(getJoueur(), getAdversaire()));
-    	}
+		for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
+			int life = c.getVie();
+			c.setVie(life-2);
+		}
 	}
 	
 	public String toString() {
