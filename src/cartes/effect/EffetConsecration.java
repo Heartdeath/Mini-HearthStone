@@ -3,14 +3,14 @@ package cartes.effect;
 import cartes.FactoryCarte;
 import etat.Joueur;
 
-public class EffectProvocation extends EffectDecorator {
+public class EffetConsecration extends EffetDecorator {
 	private String name;
 	private String effect;
 	
-	public EffectProvocation(FactoryCarte fc) {
+	public EffetConsecration(FactoryCarte fc) {
 		this.fc = fc;
-		this.name = "Provocation";
-		this.effect = "Cible prioritaire";
+		this.name = "Consecration";
+		this.effect = "Inflige 2 points de degats a TOUS les adversaires";
 	}
 
 	@Override
@@ -22,28 +22,21 @@ public class EffectProvocation extends EffectDecorator {
 	@Override
 	public String getEffect() {
 		// TODO Auto-generated method stub
-		return fc.getEffect()+" Provocation | " +this.effect;
+		return fc.getEffect()+" Consecration | " +this.effect;
 	}
 
 	@Override
-	public void useEffect() {
-		System.out.println(effect);
-		
-		getJoueur().getHeros().setPeutEtreAttaque(false);
-		
-		for(FactoryCarte c : getJoueur().getListeCarteEnJeux()){
-			if(c.getEffect().contains(getName())){
-				setPeutEtreAttaquer(true);
-			}else{
-				setPeutEtreAttaquer(false);
-			}
+	public void useEffect() { 
+		for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
+			int life = c.getVie();
+			c.setVie(life-2);
 		}
 	}
 	
 	public String toString() {
 		return fc.toString() + " Cette carte possede un "+this.getEffect() + " |";
 	}
-	
+
 	@Override
 	public int getAttaque() {return fc.getAttaque();}
 

@@ -3,14 +3,14 @@ package cartes.effect;
 import cartes.FactoryCarte;
 import etat.Joueur;
 
-public class Effect1DegatTOUSServiteur extends EffectDecorator {
+public class EffetBenedictionDePuissance extends EffetDecorator {
 	private String name;
     private String effect;
 
-    public Effect1DegatTOUSServiteur(FactoryCarte fc) {
+    public EffetBenedictionDePuissance(FactoryCarte fc) {
         this.fc = fc;
-        this.name = "Tourbillon";
-        this.effect = "Inflige 1 degat a tous les serviteurs";
+        this.name = "Benediction de puissance";
+        this.effect = "Donne +3 ATQ a un serviteur";
     }
 
     @Override
@@ -22,19 +22,14 @@ public class Effect1DegatTOUSServiteur extends EffectDecorator {
     @Override
     public String getEffect() {
         // TODO Auto-generated method stub
-        return fc.getEffect()+" Tourbillon | " +this.effect;
+        return fc.getEffect()+" Benediction de puissance | " +this.effect;
     }
 
     @Override
     public void useEffect() { 
-    	for(FactoryCarte c : getJoueur().getListeCarteEnJeux()){
-			int life = c.getVie();
-			c.setVie(life-1);
-		}
-    	for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
-			int life = c.getVie();
-			c.setVie(life-1);
-		}
+    	for(int i = 0;i < getJoueur().getListeCarteEnJeux().size() ;i++){
+    		getJoueur().getListeCarteEnJeux().get(getJoueur().getValChoisi()).setAttaque(getJoueur().getListeCarteEnJeux().get(getJoueur().getValChoisi()).getAttaque() + 3);
+    	}
     }
 
     public String toString() {
@@ -67,11 +62,11 @@ public class Effect1DegatTOUSServiteur extends EffectDecorator {
 
     @Override
     public boolean getPeutEtreAttaquer() {return fc.getPeutEtreAttaquer();}
-    
+
     @Override
 	public void setNbMana(int mana) {fc.setNbMana(mana);}
 
-    @Override
+	@Override
 	public Joueur getJoueur() {return fc.getJoueur();}
 
 	@Override

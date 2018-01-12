@@ -3,14 +3,14 @@ package cartes.effect;
 import cartes.FactoryCarte;
 import etat.Joueur;
 
-public class EffectInflige2DegatTousAdv extends EffectDecorator {
+public class EffetVolDeVie extends EffetDecorator {
 	private String name;
 	private String effect;
 	
-	public EffectInflige2DegatTousAdv(FactoryCarte fc) {
+	public EffetVolDeVie(FactoryCarte fc) {
 		this.fc = fc;
-		this.name = "Consecration";
-		this.effect = "Inflige 2 points de degats a tous les adversaires";
+		this.name = "Vol de vie";
+		this.effect = "Vol " + fc.getAttaque() + " point de vie";
 	}
 
 	@Override
@@ -22,44 +22,48 @@ public class EffectInflige2DegatTousAdv extends EffectDecorator {
 	@Override
 	public String getEffect() {
 		// TODO Auto-generated method stub
-		return fc.getEffect()+" Consecration | " +this.effect;
+		return fc.getEffect()+" Vol de vie | " +this.effect;
 	}
 
 	@Override
-	public void useEffect() { 
-		for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
-			int life = c.getVie();
-			c.setVie(life-2);
+	public void useEffect() {
+		for(int i = 0;i < getAdversaire().getListeCarteEnJeux().size() ;i++){
+			getAdversaire().getListeCarteEnJeux().get(getAdversaire().getValChoisi()).setVie(getAdversaire().getListeCarteEnJeux().get(getAdversaire().getValChoisi()).getVie() - getAttaque());
+			if(getJoueur().getHeros().getVie() + getAttaque() > 30){
+				getJoueur().getHeros().setVie(30);
+			}else{
+				getJoueur().getHeros().setVie(getJoueur().getHeros().getVie() + getAttaque());
+			}
 		}
 	}
 	
 	public String toString() {
 		return fc.toString() + " Cette carte possede un "+this.getEffect() + " |";
 	}
-
+	
 	@Override
 	public int getAttaque() {return fc.getAttaque();}
 
 	@Override
-	public void setAttaque(int atk) {}
+	public void setAttaque(int atk) {fc.setAttaque(atk);}
 
 	@Override
 	public int getVie() {return fc.getVie();}
 
 	@Override
-	public void setVie(int hp) {}
+	public void setVie(int hp) {fc.setVie(hp);}
 
 	@Override
 	public int getNbMana() {return fc.getNbMana();}
 
 	@Override
-	public void setPeutAttaquer(boolean b) {}
+	public void setPeutAttaquer(boolean b) {fc.setPeutAttaquer(b);}
 
 	@Override
 	public boolean getPeutAttaquer() {return fc.getPeutEtreAttaquer();}
 
 	@Override
-	public void setPeutEtreAttaquer(boolean b) {}
+	public void setPeutEtreAttaquer(boolean b) {fc.setPeutEtreAttaquer(b);}
 
 	@Override
 	public boolean getPeutEtreAttaquer() {return fc.getPeutEtreAttaquer();}

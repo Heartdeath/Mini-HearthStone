@@ -3,14 +3,12 @@ package cartes.effect;
 import cartes.FactoryCarte;
 import etat.Joueur;
 
-/**
- * Created by E178220S on 10/01/18.
- */
-public class EffectInfligeDegatAdversaire extends EffectDecorator {
+
+public class EffetExplosionDesArcanes extends EffetDecorator {
     private String name;
     private String effect;
 
-    public EffectInfligeDegatAdversaire(FactoryCarte fc) {
+    public EffetExplosionDesArcanes(FactoryCarte fc) {
         this.fc = fc;
         this.name = "ExplosionDesArcanes";
         this.effect = "Inflige 1 point de degats a tous les serviteurs adverses";

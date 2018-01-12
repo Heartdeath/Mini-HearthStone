@@ -1,17 +1,16 @@
 package cartes.effect;
 
 import cartes.FactoryCarte;
-import cartes.commune.ServiteurUnUn;
 import etat.Joueur;
 
-public class EffectMetamorphose extends EffectDecorator{
+public class EffetProvocation extends EffetDecorator {
 	private String name;
 	private String effect;
 	
-	public EffectMetamorphose(FactoryCarte fc) {
+	public EffetProvocation(FactoryCarte fc) {
 		this.fc = fc;
-		this.name = "Metamorphose";
-		this.effect = "Transforme un serviteur en serviteur 1/1 sans effet special";
+		this.name = "Provocation";
+		this.effect = "Obliger d'attaquer cette cible";
 	}
 
 	@Override
@@ -23,21 +22,28 @@ public class EffectMetamorphose extends EffectDecorator{
 	@Override
 	public String getEffect() {
 		// TODO Auto-generated method stub
-		return fc.getEffect()+" Metamorphose | " +this.effect;
+		return fc.getEffect()+" Provocation | " +this.effect;
 	}
 
 	@Override
-	public void useEffect() { 
-		for(int i = 0;i < getAdversaire().getListeCarteEnJeux().size() ;i++){
-    		getAdversaire().getListeCarteEnJeux().remove(getAdversaire().getValChoisi());
-    		getAdversaire().getListeCarteEnJeux().add(new ServiteurUnUn(getJoueur(), getAdversaire()));
-    	}
+	public void useEffect() {
+		System.out.println(effect);
+		
+		getJoueur().getHeros().setPeutEtreAttaque(false);
+		
+		for(FactoryCarte c : getJoueur().getListeCarteEnJeux()){
+			if(c.getEffect().contains(getName())){
+				setPeutEtreAttaquer(true);
+			}else{
+				setPeutEtreAttaquer(false);
+			}
+		}
 	}
 	
 	public String toString() {
 		return fc.toString() + " Cette carte possede un "+this.getEffect() + " |";
 	}
-
+	
 	@Override
 	public int getAttaque() {return fc.getAttaque();}
 

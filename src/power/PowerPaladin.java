@@ -1,6 +1,6 @@
 package power;
 
-import cartes.commune.ServiteurUnUn;
+import cartes.commune.RecrueMainArgent_Mouton;
 import etat.Joueur;
 import hero.Heros;
 import power.Power;
@@ -25,7 +25,7 @@ public class PowerPaladin extends Power {
 	}
 
 	public void usePower() {
-		getJoueur().getListeCarteEnJeux().add(new ServiteurUnUn(getJoueur(), getJoueurAdversaire()));
+		getJoueur().getListeCarteEnJeux().add(new RecrueMainArgent_Mouton(getJoueur(), getJoueurAdversaire()));
 	}
 	
 	public String toString(){
