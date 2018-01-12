@@ -3,8 +3,8 @@ package cartes.commune;
 import cartes.FactoryCarte;
 import etat.Joueur;
 
-public class ServiteurZeroDeux extends FactoryCarte{
-
+public class RecrueMainArgent_Mouton extends FactoryCarte{
+	
 	private Joueur joueur;
 	private Joueur jAdversaire;
 	private int vie;
@@ -13,12 +13,12 @@ public class ServiteurZeroDeux extends FactoryCarte{
 	private boolean peutAttaquer;
 	private boolean peutEtreAttaquer;
 
-	public ServiteurZeroDeux(Joueur j, Joueur jAdv) {
+	public RecrueMainArgent_Mouton(Joueur j, Joueur jAdv) {
 		this.joueur = j;
 		this.jAdversaire = jAdv;
-		this.vie = 2;
+		this.vie = 1;
 		this.nbMana = 0;
-		this.attaque = 0;
+		this.attaque = 1;
 		this.peutAttaquer = false;
 		this.peutEtreAttaquer = true;
 	}
@@ -99,6 +99,7 @@ public class ServiteurZeroDeux extends FactoryCarte{
 	}
 	
 	public String toString(){
-		return "Serviteur Dexu Zeor | "+getAttaque()+" atk | "+getVie()+" hp |";
+		return "Serviteur uno onu | "+getAttaque()+" atk | "+getVie()+" hp |";
 	}
+
 }

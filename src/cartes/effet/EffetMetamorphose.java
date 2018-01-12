@@ -1,38 +1,40 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
+import cartes.commune.RecrueMainArgent_Mouton;
 import etat.Joueur;
 
-public class EffectPlus1AttaqueToutServiteurAllie extends EffectDecorator {
+public class EffetMetamorphose extends EffetDecorator{
 	private String name;
 	private String effect;
 	
-	public EffectPlus1AttaqueToutServiteurAllie(FactoryCarte fc) {
+	public EffetMetamorphose(FactoryCarte fc) {
 		this.fc = fc;
-		this.name = "Plus 1 d attaque";
-		this.effect = "Plus 1 d attaque a tous les serviteurs allies sur le plateau (tant que ce serviteur est vivant)";
+		this.name = "Metamorphose";
+		this.effect = "Transforme un serviteur en mouton 1/1 ";
 	}
 
 	@Override
 	public String getName() {
+		// TODO Auto-generated method stub
 		return this.name;
 	}
 
 	@Override
-	public String getEffect() {return fc.getEffect()+" | " +this.effect;}
-
-	@Override
-	public void useEffect() {
-		for(FactoryCarte c : getJoueur().getListeCarteEnJeux()){
-			int attack = c.getAttaque();
-			c.setAttaque(attack+1);
-		}
-		//TODO VERIFIER LEFFET TANT QUE SERVITEUR VIVANT
+	public String getEffect() {
+		// TODO Auto-generated method stub
+		return fc.getEffect()+" Metamorphose | " +this.effect;
 	}
 
 	@Override
+	public void useEffect() { 
+		for(int i = 0;i < getAdversaire().getListeCarteEnJeux().size() ;i++){
+    		getAdversaire().getListeCarteEnJeux().remove(getAdversaire().getValChoisi());
+    		getAdversaire().getListeCarteEnJeux().add(new RecrueMainArgent_Mouton(getJoueur(), getAdversaire()));
+    	}
+	}
+	
 	public String toString() {
-		// TODO Auto-generated method stub
 		return fc.toString() + " Cette carte possede un "+this.getEffect() + " |";
 	}
 
@@ -40,25 +42,25 @@ public class EffectPlus1AttaqueToutServiteurAllie extends EffectDecorator {
 	public int getAttaque() {return fc.getAttaque();}
 
 	@Override
-	public void setAttaque(int atk) {fc.setAttaque(atk);}
+	public void setAttaque(int atk) {}
 
 	@Override
 	public int getVie() {return fc.getVie();}
 
 	@Override
-	public void setVie(int hp) {fc.setVie(hp);}
+	public void setVie(int hp) {}
 
 	@Override
 	public int getNbMana() {return fc.getNbMana();}
 
 	@Override
-	public void setPeutAttaquer(boolean b) {fc.setPeutAttaquer(b);}
+	public void setPeutAttaquer(boolean b) {}
 
 	@Override
 	public boolean getPeutAttaquer() {return fc.getPeutEtreAttaquer();}
 
 	@Override
-	public void setPeutEtreAttaquer(boolean b) {fc.setPeutEtreAttaquer(b);}
+	public void setPeutEtreAttaquer(boolean b) {}
 
 	@Override
 	public boolean getPeutEtreAttaquer() {return fc.getPeutEtreAttaquer();}
@@ -71,7 +73,7 @@ public class EffectPlus1AttaqueToutServiteurAllie extends EffectDecorator {
 
 	@Override
 	public void setJoueur(Joueur j) {fc.setJoueur(j);}
-
+	
 	@Override
 	public Joueur getAdversaire() {return fc.getAdversaire();}
 

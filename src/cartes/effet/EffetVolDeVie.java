@@ -1,17 +1,16 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
-import cartes.commune.ServiteurUnUn;
 import etat.Joueur;
 
-public class EffectMetamorphose extends EffectDecorator{
+public class EffetVolDeVie extends EffetDecorator {
 	private String name;
 	private String effect;
 	
-	public EffectMetamorphose(FactoryCarte fc) {
+	public EffetVolDeVie(FactoryCarte fc) {
 		this.fc = fc;
-		this.name = "Metamorphose";
-		this.effect = "Transforme un serviteur en serviteur 1/1 sans effet special";
+		this.name = "Vol de vie";
+		this.effect = "Vol " + fc.getAttaque() + " point de vie";
 	}
 
 	@Override
@@ -23,44 +22,48 @@ public class EffectMetamorphose extends EffectDecorator{
 	@Override
 	public String getEffect() {
 		// TODO Auto-generated method stub
-		return fc.getEffect()+" Metamorphose | " +this.effect;
+		return fc.getEffect()+" Vol de vie | " +this.effect;
 	}
 
 	@Override
-	public void useEffect() { 
+	public void useEffect() {
 		for(int i = 0;i < getAdversaire().getListeCarteEnJeux().size() ;i++){
-    		getAdversaire().getListeCarteEnJeux().remove(getAdversaire().getValChoisi());
-    		getAdversaire().getListeCarteEnJeux().add(new ServiteurUnUn(getJoueur(), getAdversaire()));
-    	}
+			getAdversaire().getListeCarteEnJeux().get(getAdversaire().getValChoisi()).setVie(getAdversaire().getListeCarteEnJeux().get(getAdversaire().getValChoisi()).getVie() - getAttaque());
+			if(getJoueur().getHeros().getVie() + getAttaque() > 30){
+				getJoueur().getHeros().setVie(30);
+			}else{
+				getJoueur().getHeros().setVie(getJoueur().getHeros().getVie() + getAttaque());
+			}
+		}
 	}
 	
 	public String toString() {
 		return fc.toString() + " Cette carte possede un "+this.getEffect() + " |";
 	}
-
+	
 	@Override
 	public int getAttaque() {return fc.getAttaque();}
 
 	@Override
-	public void setAttaque(int atk) {}
+	public void setAttaque(int atk) {fc.setAttaque(atk);}
 
 	@Override
 	public int getVie() {return fc.getVie();}
 
 	@Override
-	public void setVie(int hp) {}
+	public void setVie(int hp) {fc.setVie(hp);}
 
 	@Override
 	public int getNbMana() {return fc.getNbMana();}
 
 	@Override
-	public void setPeutAttaquer(boolean b) {}
+	public void setPeutAttaquer(boolean b) {fc.setPeutAttaquer(b);}
 
 	@Override
 	public boolean getPeutAttaquer() {return fc.getPeutEtreAttaquer();}
 
 	@Override
-	public void setPeutEtreAttaquer(boolean b) {}
+	public void setPeutEtreAttaquer(boolean b) {fc.setPeutEtreAttaquer(b);}
 
 	@Override
 	public boolean getPeutEtreAttaquer() {return fc.getPeutEtreAttaquer();}

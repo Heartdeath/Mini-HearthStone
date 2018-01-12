@@ -1,20 +1,16 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
-import cartes.commune.ServiteurZeroDeux;
 import etat.Joueur;
 
-/**
- * Created by E178220S on 10/01/18.
- */
-public class EffectInvoqueDeuxServiteurs extends EffectDecorator{
-    private String name;
+public class EffetBenedictionDePuissance extends EffetDecorator {
+	private String name;
     private String effect;
 
-    public EffectInvoqueDeuxServiteurs(FactoryCarte fc) {
+    public EffetBenedictionDePuissance(FactoryCarte fc) {
         this.fc = fc;
-        this.name = "Image miroir";
-        this.effect = "Invoque deux serviteurs 0/2 avec provocation";
+        this.name = "Benediction de puissance";
+        this.effect = "Donne +3 ATQ a un serviteur";
     }
 
     @Override
@@ -26,15 +22,14 @@ public class EffectInvoqueDeuxServiteurs extends EffectDecorator{
     @Override
     public String getEffect() {
         // TODO Auto-generated method stub
-        return fc.getEffect()+" Image miroir | " +this.effect;
+        return fc.getEffect()+" Benediction de puissance | " +this.effect;
     }
 
     @Override
-    public void useEffect() {
-    	FactoryCarte fc = new ServiteurZeroDeux(getJoueur(), getAdversaire());
-    	            fc = new EffectProvocation(fc);
-    	getJoueur().getListeCarteEnJeux().add(fc);
-    	getJoueur().getListeCarteEnJeux().add(fc);
+    public void useEffect() { 
+    	for(int i = 0;i < getJoueur().getListeCarteEnJeux().size() ;i++){
+    		getJoueur().getListeCarteEnJeux().get(getJoueur().getValChoisi()).setAttaque(getJoueur().getListeCarteEnJeux().get(getJoueur().getValChoisi()).getAttaque() + 3);
+    	}
     }
 
     public String toString() {
@@ -82,5 +77,4 @@ public class EffectInvoqueDeuxServiteurs extends EffectDecorator{
 
 	@Override
 	public void setAdversaire(Joueur jAdv) {fc.setAdversaire(jAdv);}
-
 }

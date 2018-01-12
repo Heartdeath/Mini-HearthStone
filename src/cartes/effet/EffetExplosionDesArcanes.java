@@ -1,16 +1,17 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
 import etat.Joueur;
 
-public class EffectConfere3AttaqueUnServiteur extends EffectDecorator {
-	private String name;
+
+public class EffetExplosionDesArcanes extends EffetDecorator {
+    private String name;
     private String effect;
 
-    public EffectConfere3AttaqueUnServiteur(FactoryCarte fc) {
+    public EffetExplosionDesArcanes(FactoryCarte fc) {
         this.fc = fc;
-        this.name = "Benediction de puissance";
-        this.effect = "Confere +3 d attaque a un serviteur";
+        this.name = "ExplosionDesArcanes";
+        this.effect = "Inflige 1 point de degats a tous les serviteurs adverses";
     }
 
     @Override
@@ -22,14 +23,15 @@ public class EffectConfere3AttaqueUnServiteur extends EffectDecorator {
     @Override
     public String getEffect() {
         // TODO Auto-generated method stub
-        return fc.getEffect()+" Benediction de puissance | " +this.effect;
+        return fc.getEffect()+" Explosion Des Arcanes | " +this.effect;
     }
 
     @Override
     public void useEffect() { 
-    	for(int i = 0;i < getJoueur().getListeCarteEnJeux().size() ;i++){
-    		getJoueur().getListeCarteEnJeux().get(getJoueur().getValChoisi()).setAttaque(getJoueur().getListeCarteEnJeux().get(getJoueur().getValChoisi()).getAttaque() + 3);
-    	}
+    	for(FactoryCarte c : getAdversaire().getListeCarteEnJeux()){
+			int life = c.getVie();
+			c.setVie(life-1);
+		}
     }
 
     public String toString() {

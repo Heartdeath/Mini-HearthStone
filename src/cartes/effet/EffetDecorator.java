@@ -1,13 +1,12 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
 /**
- * Classe abstraite utilisant le design pattern decorator pour l'ajout
- * d'effet (multiple ou non) au cartes en possédant.
- * @author E145855N
+ * Classe abstraite utilisant le design pattern decorator 
+ *
  *
  */
-public abstract class EffectDecorator extends FactoryCarte{
+public abstract class EffetDecorator extends FactoryCarte{
 	protected FactoryCarte fc;
 	
 	/**

@@ -1,20 +1,20 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
-import cartes.commune.ServiteurZeroDeux;
+import cartes.commune.ImageMiroir;
 import etat.Joueur;
 
 /**
  * Created by E178220S on 10/01/18.
  */
-public class EffectMaitriseDuBlocage extends EffectDecorator{
+public class EffetMaitriseDuBlocage extends EffetDecorator{
     private String name;
     private String effect;
 
-    public EffectMaitriseDuBlocage(FactoryCarte fc) {
+    public EffetMaitriseDuBlocage(FactoryCarte fc) {
         this.fc = fc;
         this.name = "Maitrise du blocage";
-        this.effect = "+5 d armure et place une carte aleatoire de la pioche dans votre main";
+        this.effect = "Vous gagner 5 points d'armure. Vous piochez une carte";
     }
 
     @Override

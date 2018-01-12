@@ -1,16 +1,17 @@
-package cartes.effect;
+package cartes.effet;
 
 import cartes.FactoryCarte;
+
 import etat.Joueur;
 
-public class Effect1DegatTOUSServiteur extends EffectDecorator {
+public class EffetTourbillon extends EffetDecorator {
 	private String name;
     private String effect;
 
-    public Effect1DegatTOUSServiteur(FactoryCarte fc) {
+    public EffetTourbillon(FactoryCarte fc) {
         this.fc = fc;
         this.name = "Tourbillon";
-        this.effect = "Inflige 1 degat a tous les serviteurs";
+        this.effect = "Inflige 1 point de degat a TOUS les serviteurs";
     }
 
     @Override
