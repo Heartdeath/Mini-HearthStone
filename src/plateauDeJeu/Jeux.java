@@ -44,8 +44,8 @@ public class Jeux {
 			
 			affichageDeLaPartie(j2, j1);
 			
-			System.out.println(j1.getName() +" : " + j1.getEtat());
-			System.out.println(j2.getName() +" : " + j2.getEtat());
+			System.out.println(j1.getNom() +" : " + j1.getEtat());
+			System.out.println(j2.getNom() +" : " + j2.getEtat());
 			
 			pointDeMana(j2);
 		}else if (j1.getEtat().toString().equals("En Attente") && j2.getEtat().toString().equals("En jeu")) {
@@ -55,8 +55,8 @@ public class Jeux {
 			
 			affichageDeLaPartie(j1, j2);
 			
-			System.out.println(j1.getName() +" : " + j1.getEtat());
-			System.out.println(j2.getName() +" : " + j2.getEtat());
+			System.out.println(j1.getNom() +" : " + j1.getEtat());
+			System.out.println(j2.getNom() +" : " + j2.getEtat());
 			
 			pointDeMana(j1);
 		}
@@ -76,7 +76,7 @@ public class Jeux {
 	}
 	
 	public void attaquerHero(Heros h){
-		System.out.println(h.getJoueurAdversaire().getName());
+		System.out.println(h.getJoueurAdversaire().getNom());
 	}
 	
 	public boolean coutManaCarte(Joueur joueur, FactoryCarte carte){
@@ -101,7 +101,7 @@ public class Jeux {
 	}
 	
 	public void affichageDeLaPartie(Joueur joueur, Joueur adversaire){
-		System.out.println("Carte de " +adversaire.getName()+ ":");
+		System.out.println("Carte de " +adversaire.getNom()+ ":");
 		adversaire.affichageCartesJeu();
 		System.out.println("-------------------------------------------------------------------------------------");
 		
@@ -122,11 +122,84 @@ public class Jeux {
 		
 	}
 	
-	public void lancerLeJeu(Joueur joueur1, Joueur joueur2) {
+	public ArrayList<Joueur> initialisationDesJoueurs() {
 		
 		Scanner scJoueur1 = new Scanner(System.in);
 		Scanner scJoueur2 = new Scanner(System.in);
-		Scanner sc = new Scanner(System.in);
+		ArrayList<Joueur> listeJoueurs = new ArrayList();
+		
+		//Creation des joueurs
+		
+		//joueur1
+		System.out.println("Joueur 1 choisir votre pseudo :");
+		String joueur1Nom = scJoueur1.nextLine();
+		
+		System.out.println(joueur1Nom + " choisissez un heros  : "
+				+ "\n 1 pour le Mage"
+				+ "\n 2 pour le Guerrier"
+				+ "\n 3 pour le Paladin");
+		
+		int joueur1SelectionHeros = scJoueur1.nextInt();
+		String joueur1Heros = null;
+		
+		while(!((joueur1SelectionHeros == 1) || (joueur1SelectionHeros == 2) || (joueur1SelectionHeros == 3))) {
+				System.out.println("Mauvaise saisie");
+				joueur1SelectionHeros = scJoueur1.nextInt();
+		}
+			
+		if(joueur1SelectionHeros == 1) {
+			joueur1Heros = "Mage";
+		}else if(joueur1SelectionHeros == 2) {
+			joueur1Heros = "Guerrier";
+		}else if(joueur1SelectionHeros == 3) {
+			joueur1Heros = "Paladin";
+		}
+		
+		//joueur2
+		System.out.println("Joueur 2 choisir votre pseudo :");
+		String joueur2Nom = scJoueur2.nextLine();
+		
+		System.out.println(joueur2Nom + " choisissez un heros : "
+				+ "\n 1 pour le Mage"
+				+ "\n 2 pour le Guerrier"
+				+ "\n 3 pour le Paladin");
+		int joueur2SelectionHeros = scJoueur2.nextInt();
+		String joueur2Heros = null;
+		
+		while(!((joueur2SelectionHeros == 1) || (joueur2SelectionHeros == 2) || (joueur2SelectionHeros == 3))) {
+				System.out.println("Mauvaise saisie");
+				joueur2SelectionHeros = scJoueur2.nextInt();
+		}
+			
+		if(joueur2SelectionHeros == 1) {
+			joueur2Heros = "mage";
+			
+		}else if(joueur2SelectionHeros == 2) {
+			joueur2Heros = "guerrier";
+			
+		}else if(joueur2SelectionHeros == 3) {
+			joueur2Heros = "paladin";
+		}
+		
+		Joueur joueur2 = new Joueur(joueur2Nom);
+		Joueur joueur1 = new Joueur(joueur1Nom,joueur1Heros, joueur2);
+		
+		joueur2.setJoueurAdv(joueur1);
+		joueur2.selectionHeros(joueur2Heros);
+		
+		listeJoueurs.add(joueur1);
+		listeJoueurs.add(joueur2);
+		
+		return listeJoueurs;
+
+	}
+	
+	public void lancerLeJeu(Scanner sc) {
+		
+		ArrayList<Joueur> listeJoueurs = this.initialisationDesJoueurs();
+		
+		Joueur joueur1 = listeJoueurs.get(0);
+		Joueur joueur2 = listeJoueurs.get(1);
 		
 		EtatJouer joue = new EtatJouer();
 		EtatAttente enAttente = new EtatAttente();
@@ -165,11 +238,11 @@ public class Jeux {
 				joueurAdv = joueur1;
 			}
 			
-			int joueur1SelectionAction = scJoueur1.nextInt();
+			int joueur1SelectionAction = sc.nextInt();
 			int mana = joueurEnJeu.getMana();
 			while(!((joueur1SelectionAction == 1) || (joueur1SelectionAction == 2) || (joueur1SelectionAction == 3)|| (joueur1SelectionAction == 4)|| (joueur1SelectionAction == 5))) {
 					System.out.println("Mauvaise saisie");
-					joueur1SelectionAction = scJoueur1.nextInt();
+					joueur1SelectionAction = sc.nextInt();
 			}
 		
 			if(joueur1SelectionAction == 1) {

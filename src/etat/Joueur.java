@@ -101,11 +101,11 @@ public class Joueur {
 		this.heros = heros;
 	}
 
-	public String getName() {
+	public String getNom() {
 		return nomJoueur;
 	}
 
-	public void setName(String name) {
+	public void setNom(String name) {
 		this.nomJoueur = name;
 	}
 
@@ -302,6 +302,6 @@ public class Joueur {
 	public void affichageInfoJoueur(){
 		System.out.println("Vie  : " + heros.getVie());
 		System.out.println("Mana : " + getMana());
-		System.out.println("A votre tour "+getName());
+		System.out.println("A votre tour "+getNom());
 	}
 }
