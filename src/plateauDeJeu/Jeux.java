@@ -2,7 +2,6 @@ package plateauDeJeu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import cartes.FactoryCarte;
 import etat.EtatAttente;
 import etat.EtatJouer;
@@ -27,7 +26,7 @@ public class Jeux {
 		return random;
 	}
 	
-	public void changementJoueur(Joueur j1, Joueur j2){
+	public void passageAuJoueurSuivant(Joueur j1, Joueur j2){
 		
 		EtatJouer joue = new EtatJouer();
 		EtatAttente enAttente = new EtatAttente();
@@ -266,7 +265,7 @@ public class Jeux {
 					}
 				}
 			}else if (joueur1SelectionAction == 5) {
-				 this.changementJoueur(joueur1, joueur2);
+				 this.passageAuJoueurSuivant(joueur1, joueur2);
 			}else{
 				break;
 			}
